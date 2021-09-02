@@ -5,12 +5,13 @@ The output file is "The-Art-of-Linear-Algebra.pdf"
 
 ## Abstract
 I tried intuitive visualizations of important concepts introduced
-in ``Linear Algebra for Everyone".
+in "Linear Algebra for Everyone".
+
 This is aimed at promoting understanding of vector/matrix calculations
-and algorithms from the\linebreak perspectives of matrix factorizations.
-They include Column-Row ($\bm{CR}$), Gaussian Elimination ($\bm{LU}$),
-Gram-Schmidt Orthogonalization ($\bm{QR}$), Eigenvalues and Diagonalization ($\bm{Q \Lambda Q^\mathbf{T}}$),
-and Singular Value Decomposition ($\bm{U \Sigma V^\mathbf{T}}$).
+and algorithms from the perspectives of matrix factorizations.
+They include Column-Row (CR), Gaussian Elimination (LU),
+Gram-Schmidt Orthogonalization (QR), Eigenvalues and Diagonalization (Q Lambda Q^T),
+and Singular Value Decomposition (U Sigma V^T).
 
 ![](5-Factorizations.png)
 
