@@ -1,7 +1,7 @@
 # The-Art-of-Linear-Algebra
 Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 
-The output file is "The-Art-of-Linear-Algebra.pdf"
+The output file is "[The-Art-of-Linear-Algebra.pdf](The-Art-of-Linear-Algebra.pdf)"
 
 ## Abstract
 I tried intuitive visualizations of important concepts introduced
@@ -13,6 +13,6 @@ They include Column-Row (CR), Gaussian Elimination (LU),
 Gram-Schmidt Orthogonalization (QR), Eigenvalues and Diagonalization (Q Lambda Q^T),
 and Singular Value Decomposition (U Sigma V^T).
 
-![](5-Factorizations.png)
+![5 Factorizations](5-Factorizations.png)
 
 
