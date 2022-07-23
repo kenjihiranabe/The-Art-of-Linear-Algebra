@@ -7,6 +7,16 @@
 \usepackage[top=20truemm,bottom=20truemm,left=25truemm,right=25truemm]{geometry}
 \usepackage[dvipdfmx]{hyperref,graphicx}
 
+% incorporated from Linear Algebra for Everyone 7/18/2022
+\newcommand{\bi}[1]{\hbox{\boldmath$#1$}}
+\DeclareRobustCommand\transp{^{\mathrm{T}}}
+\DeclareMathAlphabet{\cmrv}{OML}{cmm}{b}{it}
+\newcommand{\bu}{\hbox{\boldmath$u$}}
+\newcommand{\bv}{\hbox{$\cmrv{v}$}}
+\newcommand{\bw}{\hbox{\boldmath$w$}}
+\newcommand\mat{{\sf MATLAB}}
+%
+
 \begin{document}
 \title{The Art of Linear Algebra\\
 \vspace{5pt}
@@ -85,8 +95,7 @@ A matrix ($m \times n$) can be seen as $1$ matrix, $mn$ numbers, $n$ columns and
 Here, the column vectors are in bold as $\bm{a_1}$.
 Row vectors include $\bm{*}$ as in $\bm{a_1^*}$.
 Transposed vectors and matrices are indicated by $\mathrm{T}$ as
-in $\bm{a}^{\mathrm{T}}$ and $A^{\mathrm{T}}$.
-
+in $\bm{a}\transp$ and $A\transp$.
 
 \section{Vector times Vector -- 2 Ways}
 
