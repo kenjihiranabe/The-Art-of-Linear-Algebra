@@ -67,7 +67,7 @@ A matrix ($m \times n$) can be seen as $1$ matrix, $mn$ numbers, $n$ columns and
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=7cm]{ViewingMatrix-4Ways.png}
+  \includegraphics[keepaspectratio, width=7cm]{ViewingMatrix-4Ways.eps}
   \caption{Viewing a Matrix in 4 Ways}
 \end{figure}
 
@@ -111,7 +111,7 @@ in colored circles.
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesVector.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesVector.eps}
   \caption{Vector times Vector - (v1), (v2)}
 \end{figure}
 
@@ -126,7 +126,7 @@ as well as a linear combination (Mv2) of the column vectors of $A$.
 \end{itemize} 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesVector.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesVector.eps}
   \caption{Matrix times Vector - (Mv1), (Mv2)}
 \end{figure}
 
@@ -135,10 +135,23 @@ you can understand $Ax$ as a linear combination of the columns of $A$.
 Those products fill the column space of $A$  denoted as $\mathbf{C}(A)$.
 The solution space of $Ax=0$ is the nullspace of $A$ denoted as $\mathbf{N}(A)$.
 
+Also, (vM1) and (vM2) shows the same patterns for a column vector times a matrix.
+
+\begin{figure}[H]
+  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesMatrix.eps}
+  \caption{Vector times Matrix - (vM1), (vM2)}
+\end{figure}
+
+
+The products fill the row space of $A$ denoted as $\mathbf{C}(A\transp)$.
+The solution space of $yA=0$ is the left-nullspace of $A$ denoted as $\mathbf{N}(A\transp)$.
+
+
 The four subspaces consists of $\mathbf{N}(A)$ + $\mathbf{C}(A^\mathbf{T})$ 
 (which are perpendicular to each other) in $\mathbb{R}^n$ and
 $\mathbf{N}(A^\mathbf{T})$ + $\mathbf{C}(A)$ in $\mathbb{R}^m$
 (which are perpendicular to each other).
+
 
 \begin{itemize}
   \item Sec. 3.5 (p.124) Dimensions of the Four Subspaces
@@ -146,7 +159,7 @@ $\mathbf{N}(A^\mathbf{T})$ + $\mathbf{C}(A)$ in $\mathbb{R}^m$
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=8cm]{4-Subspaces.png}
+  \includegraphics[keepaspectratio, width=8cm]{4-Subspaces.eps}
   \caption{The Four Subspaces}
 \end{figure}
 
@@ -166,7 +179,7 @@ See $A=CR$ (Sec 6.1) for the rank $r$.
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesMatrix.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesMatrix.eps}
   \caption{Matrix times Matrix - (MM1), (MM2), (MM3), (MM4)}
 \end{figure}
 
@@ -179,7 +192,7 @@ Here, I show some practical patterns which allow you to capture
 the coming factorizations more intuitively.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern12.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern12.eps}
   \caption{Pattern 1, 2 - (P1), (P1)}
 \end{figure}
 
@@ -188,7 +201,7 @@ Pattern 2 is an extention of (MM3). Note that Pattern 1 is a column operation (m
 whereas Pattern 2 is a row operation (multiplying a matrix from left).
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern11-22.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern11-22.eps}
   \caption{Pattern 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
 \end{figure}
 
@@ -197,7 +210,7 @@ whereas (P2$^\prime$) multipies the diagonal numbers to the row of the matrx.
 Both are variants of (P1) and (P2).
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern3.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern3.eps}
   \caption{Pattern 3 - (P3)}
 \end{figure}
 
@@ -242,7 +255,7 @@ and the general solution of the two equations are:
 See Figure 8: Pattern 3 (P3) above again for $XDc$.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern4.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern4.eps}
   \caption{Pattern 4 - (P4)}
 \end{figure}
 
@@ -263,7 +276,7 @@ $A=CR, A=LU, A=QR, A=Q \Lambda Q^\mathbf{T}\, A=U \Sigma V^\mathbf{T}$ are
 illustrated one by one.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{5-Factorizations.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{5-Factorizations.eps}
   \caption{The Five Factorizations}
 \end{figure}
 
@@ -307,7 +320,7 @@ To rebuild $A$ by the independent columns 1, 2, you find a row echelon form $R$
 appearing in the right.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR1.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{CR1.eps}
   \caption{Column Rank in $CR$}
 \end{figure}
 
@@ -315,7 +328,7 @@ Now you see the column rank is two because there are only two independent column
 and all the columns of $A$ are linear combinations of the two columns of $C$.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR2.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{CR2.eps}
   \caption{Row Rank in $CR$}
 \end{figure}
 
@@ -385,7 +398,7 @@ Here, we directly calculate $L$ and $U$ from $A$.
  
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU1.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{LU1.eps}
 \caption{Recursive Rank 1 Matrix Peeling from $A$}
 \end{figure}
 
@@ -395,7 +408,7 @@ This leaves $A_2$. Do this recursively and decompose $A$ into the sum of rank 1 
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU2.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{LU2.eps}
 \caption{$LU$ rebuilds $A$}
 \end{figure}
 
@@ -448,7 +461,7 @@ The original $A$ becomes $QR$: orthogonal times triangular.
 \end{gather*}
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{QR.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{QR.eps}
   \caption{$A=QR$}
 \end{figure}
 
@@ -523,7 +536,7 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{EVD.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{EVD.eps}
   \caption{$S=Q \Lambda Q^\mathbf{T}$}
 \end{figure}
 
@@ -555,7 +568,7 @@ And its singular values in $\Lambda$.
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{SVD.png}
+  \includegraphics[keepaspectratio, width=\linewidth]{SVD.eps}
   \caption{$A=U \Sigma V^\mathbf{T}$}
 \end{figure}
 
