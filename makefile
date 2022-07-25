@@ -1,7 +1,9 @@
-TITLE=The-Art-of-Linear-Algebra
+ART=The-Art-of-Linear-Algebra
 ILLUST=Illustrations
+WORLD=MatrixWorld
+MAP=MapofEigenvalues
 
-all: $(TITLE).pdf
+all: $(ART).pdf $(WORLD).eps $(MAP).eps
 
 PS=ViewingMatrix-4Ways.ps\
 	VectorTimesVector.ps\
@@ -22,9 +24,14 @@ PS=ViewingMatrix-4Ways.ps\
 	EVD.ps\
 	SVD.ps
 
-$(ILLUST).ps: $(ILLUST).pptx
-	@echo "*** Print out $< to PostScript(.ps), then make again ***"
+%.ps: %.pptx
+	@echo "*** Print out $< to PostScript(.ps, without version name), then make again ***"
 
+#$(ILLUST).ps: $(ILLUST).pptx
+#$(WORLD).ps: $(WORLD)-v1.4.2.pptx
+#	@echo "*** Print out $< to PostScript(.ps, without version name), then make again ***"
+#$(MAP).ps: $(MAP)-v1.1.pptx
+#	@echo "*** Print out $< to PostScript(.ps, without version name), then make again ***"
 
 ViewingMatrix-4Ways.ps: $(ILLUST).ps
 	psselect -p 2 $< $@
@@ -62,6 +69,11 @@ EVD.ps: $(ILLUST).ps
 	psselect -p 18 $< $@
 SVD.ps: $(ILLUST).ps
 	psselect -p 19 $< $@
+$(WORLD).ps: $(ILLUST).ps
+	psselect -p 20 $< $@
+$(MAP).ps: $(ILLUST).ps
+	psselect -p 21 $< $@
+
 
 EPS=$(PS:.ps=.eps)
 
@@ -80,4 +92,4 @@ $(EPS): $(PS)
 	ps2eps -B -l -f $<
 
 clean:
-	rm -f *.dvi $(PS) *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk
+	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk
