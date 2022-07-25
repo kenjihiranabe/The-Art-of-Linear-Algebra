@@ -80,4 +80,4 @@ $(EPS): $(PS)
 	ps2eps -B -l -f $<
 
 clean:
-	rm -f *.dvi $(PS) *.out *.log *.fls
+	rm -f *.dvi $(PS) *.out *.log *.fls *.aux *.toc
