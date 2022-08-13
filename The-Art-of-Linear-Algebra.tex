@@ -67,8 +67,8 @@ A matrix ($m \times n$) can be seen as $1$ matrix, $mn$ numbers, $n$ columns and
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=7cm]{ViewingMatrix-4Ways.eps}
-  \caption{Viewing a Matrix in 4 Ways}
+  \includegraphics[keepaspectratio, width=8cm]{ViewingMatrix-4Ways.eps}\\
+    \caption{Viewing a Matrix in 4 Ways}
 \end{figure}
 
 
@@ -111,6 +111,7 @@ in colored circles.
 
 
 \begin{figure}[H]
+  \centering
   \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesVector.eps}
   \caption{Vector times Vector - (v1), (v2)}
 \end{figure}
@@ -131,11 +132,11 @@ as well as a linear combination (Mv2) of the column vectors of $A$.
 \end{figure}
 
 At first, you learn (Mv1). But when you get used to viewing it as (Mv2),
-you can understand $Ax$ as a linear combination of the columns of $A$.
+you can understand $A\bi{x}$ as a linear combination of the columns of $A$.
 Those products fill the column space of $A$  denoted as $\mathbf{C}(A)$.
-The solution space of $Ax=0$ is the nullspace of $A$ denoted as $\mathbf{N}(A)$.
+The solution space of $A\bi{x}=\bi{0}$ is the nullspace of $A$ denoted as $\mathbf{N}(A)$.
 
-Also, (vM1) and (vM2) shows the same patterns for a column vector times a matrix.
+Also, (vM1) and (vM2) shows the same patterns for a row vector times a matrix.
 
 \begin{figure}[H]
   \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesMatrix.eps}
@@ -339,7 +340,7 @@ and all the rows of $A$ are linear combinations of the two rows of $R$.
 
 \subsection{$\boldsymbol{A=LU}$}
 
-Solving $Ax=b$  via Gaussian elimination can be expressed as a $LU$ factorization.
+Solving $\bi{x}=\bi{b}$  via Gaussian elimination can be expressed as a $LU$ factorization.
 Usually, you apply elementary row operation matrices ($E$) from left of $A$ to make upper trianglar $U$.
 
 \begin{align*}
@@ -648,11 +649,18 @@ traditional data science and machine learning. An important part of the matrix w
   \item
   Gilbert Strang(2016), \emph{Introduction to Linear Algebra},Wellesley Cambridge Press, 5th ed.,\\
   \href{http://math.mit.edu/linearalgebra}{http://math.mit.edu/linearalgebra}
+  \item Kenji Hiranabe(2021), \emph{Map of Eigenvalues}, An Agile Way(blog),\\
+  \href{https://anagileway.com/2021/10/01/map-of-eigenvalues/}{https://anagileway.com/2021/10/01/map-of-eigenvalues/}\\
+  \begin{figure}[H]
+    \includegraphics[keepaspectratio, width=\linewidth]{MapofEigenvalues.eps}
+    \caption{Map of Eigenvalues}
+  \end{figure}
   \item Kenji Hiranabe(2020), \emph{Matrix World}, An Agile Way(blog),\\
   \href{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}
-  \item Kenji Hiranabe(2021), \emph{Map of Eigenvalues}, An Agile Way(blog),\\
-  \href{https://anagileway.com/2021/10/01/map-of-eigenvalues/}{https://anagileway.com/2021/10/01/map-of-eigenvalues/}
+  \begin{figure}[H]
+    \includegraphics[keepaspectratio, width=\linewidth]{MatrixWorld.eps}
+    \caption{Matrix World}
+  \end{figure}
 \end{enumerate}
-
 
 \end{document}
