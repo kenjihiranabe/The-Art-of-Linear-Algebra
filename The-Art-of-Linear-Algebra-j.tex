@@ -163,7 +163,6 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 \end{figure}
 
 ランクについて，行ランクと列ランクが等しいことを示す $A=CR$ 分解(6.1)参照．
-
 \clearpage
 
 \section{2つの行列の積 -- 4 つの見方}
@@ -180,9 +179,6 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
   \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesMatrix-j.eps}
   \caption{2つの行列の積 - (MM1), (MM2), (MM3), (MM4)}
 \end{figure}
-
-\clearpage
-
 
 \section{実用的なパターン}
 
@@ -209,7 +205,7 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 (P2$^\prime$) では，行列の行に対角のスカラーが掛け算される．この2つのパターンは，(P1)と(P2)から派生したものだ．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern3.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern3-j.eps}
   \caption{パターン 3 - (P3)}
 \end{figure}
 
@@ -252,7 +248,7 @@ $\bm{c}$は $X$ を基底としたときの初期値 $\bm{u}_0$ の座標であ�
 $XDc$ を理解するために，Figure 8 のパターン3(P3) を再度みよ．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern4.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern4-j.eps}
   \caption{パターン 4 - (P4)}
 \end{figure}
 
@@ -262,8 +258,6 @@ $XDc$ を理解するために，Figure 8 のパターン3(P3) を再度みよ�
 
 行列の分解については次の節でより詳しく解説する．
 
-\clearpage
-
 \section{5つの行列分解}
 
 \begin{itemize}
@@ -272,7 +266,7 @@ $XDc$ を理解するために，Figure 8 のパターン3(P3) を再度みよ�
 $A=CR, A=LU, A=QR, A=Q \Lambda Q\transp\, A=U \Sigma V\transp$ の5分解を図解しよう．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{5-Factorizations.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{5-Factorizations-j.eps}
   \caption{5つの行列分解}
 \end{figure}
 
@@ -314,14 +308,14 @@ $A=CR$ によって，$A$ は $r$本の線形独立な列$C$と$r$本の線形�
 $A$ の各列を再生するには，$C$ の各列を組み合わせる．その組み合わせ係数が $R$ の各列に成分として表記されている．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR1.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{CR1-j.eps}
   \caption{$CR$の列ランク}
 \end{figure}
 
 $C$の列数が2であるから，列ランクが2である．すなわち，$A$のすべての列は$C$の列の線型結合である．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR2.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{CR2-j.eps}
   \caption{$CR$の行ランク}
 \end{figure}
 
@@ -389,7 +383,7 @@ $R$の行数が2であるから，行ランクも2である．すなわち，$A$
  
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU1.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{LU1-j.eps}
 \caption{再帰的なランク1行列の「皮むき」}
 \end{figure}
 
@@ -398,7 +392,7 @@ $L$と$U$を計算するために，まず，$A$の第1行と第1列の外積に
 ランク1行列を抜き出していく．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU2.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{LU2-j.eps}
 \caption{$LU$ から $A$ を再生}
 \end{figure}
 
@@ -452,7 +446,7 @@ $A=QR$ は $A$ の列を直交行列に変換して $Q$ に格納する．
 \end{gather*}
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{QR.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{QR-j.eps}
   \caption{$A=QR$}
 \end{figure}
 
