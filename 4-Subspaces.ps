@@ -1,6 +1,4 @@
-%!PS-Adobe-2.0 EPSF-2.0
-%%BoundingBox: 136 273 459 539
-%%HiResBoundingBox: 137 274 458 538.5
+%!PS-Adobe-3.0
 %APL_DSC_Encoding: UTF8
 %APLProducer: (Version 12.4 (Build 21F79) Quartz PS Context)
 %%Title: (Illustrations)
@@ -11,17 +9,9 @@
 %%LanguageLevel: 2
 %%PageOrder: Ascend
 %RBINumCopies: 1
+%%Pages: (atend)
+%%BoundingBox: (atend)
 %%EndComments
-% EPSF created by ps2eps 1.68
-%%BeginProlog
-save
-countdictstack
-mark
-newpath
-/showpage {} def
-/setpagedevice {pop} def
-%%EndProlog
-%%Page 1 1
 userdict/dscInfo 5 dict dup begin
 /Title(Illustrations)def
 /Creator(PowerPoint: cgpdftops CUPS filter)def
@@ -156,6 +146,7 @@ counttomark 2 idiv
 /cm {cmmtx astore CM concat}bd	% reset the matrix and then concat
 /W{clip newpath}bd
 /W*{eoclip newpath}bd
+
 statusdict begin product end dup (HP) anchorsearch{
     pop pop pop	% pop off the search results
     true
@@ -167,6 +158,7 @@ statusdict begin product end dup (HP) anchorsearch{
 	pop false
     }ifelse
 }ifelse
+
 {	% HP is the product: we use this method of stroking because of a bug in their clone printers with certain T3 fonts
     { 
 	{ % charCode Wx Wy
@@ -184,6 +176,7 @@ statusdict begin product end dup (HP) anchorsearch{
 /bp{/pgsave save store}bd
 /ep{pgsave restore showpage}def		% dont' bind
 /re{4 2 roll m 1 index 0 rlineto 0 exch rlineto neg 0 rlineto h}bd
+
 /scrdict 10 dict def
 /scrmtx matrix def
 /patarray 0 def
@@ -199,6 +192,7 @@ makepattern
 grestore
 setpattern
 }bd
+
 /cg_BeginEPSF{
     userdict save/cg_b4_Inc_state exch put
     userdict/cg_endepsf/cg_EndEPSF load put
@@ -218,6 +212,7 @@ setpattern
   userdict/cg_b4_Inc_state get restore
   F setpacking
 }bd
+
 /cg_biproc{currentfile/RunLengthDecode filter}bd
 /cg_aiproc{currentfile/ASCII85Decode filter/RunLengthDecode filter}bd
 /ImageDataSource 0 def
@@ -279,6 +274,7 @@ exch
 {imagemask}{image}ifelse	
 end	% pop imagedict from dict stack
 }bd
+
 /cguidfix{statusdict begin mark version end
 {cvr}stopped{cleartomark 0}{exch pop}ifelse
 2012 lt{dup findfont dup length dict begin
@@ -319,6 +315,7 @@ currentdict end definefont pop
     /t_array 0 def
 }bd
 /sop/stroke ld		% default sop is stroke. Done here so we don't bind in /base_charpath 
+
 % default sop is stroke
 /nop{}def
 /xsp/base_charpath ld
@@ -335,8 +332,11 @@ definefont pop
 /renmfont{ % newname fontname
 findfont dup length dict copy definefont pop
 }bd
+
 L3? dup dup{save exch}if
+
 % languagelevel2 ONLY code goes here
+
 /Range 0 def
 /DataSource 0 def
 /val 0 def
@@ -357,6 +357,7 @@ L3? dup dup{save exch}if
 /ymin 0 def
 /xmax 0 def
 /xmin 0 def
+
 /setupFunEval % funDict -- 	% this calculates and sets up a function dict for evaulation.
 {
     begin
@@ -377,6 +378,7 @@ L3? dup dup{save exch}if
 	]store
     end
 }bd
+
 /FunEval % val1 fundict -> comp1 comp2 ... compN
 {
     begin
@@ -394,11 +396,13 @@ L3? dup dup{save exch}if
 	}for	% comp1 comp2 ... compN
     end
 }bd
+
 /max % a b -> max(a, b)
 {
 	2 copy lt
 	{exch pop}{pop}ifelse
 }bd
+
 /sh2
 {	% emulation of shading type 2. Assumes shading dictionary is top dictionary on the dict stack
 	/Coords load aload pop 	% x0 y0 x1 y1
@@ -455,15 +459,18 @@ L3? dup dup{save exch}if
 		}if
 	}if
 }bd
+
 /shp	% this paints our shape for shading type 3
 {	% x1 r1 x0 r0 -
 	4 copy
+
 	% fill interior arc
 	dup 0 gt{
 		0 exch a1 a0 arc
 	}{
 		pop 0 moveto
 	}ifelse
+
 	dup 0 gt{
 		0 exch a0 a1 arcn
 	}{
@@ -471,12 +478,14 @@ L3? dup dup{save exch}if
 	}ifelse
 	
 	fill
+
 	% fill exterior arc
 	dup 0 gt{
 		0 exch a0 a1 arc
 	}{
 		pop 0 moveto
 	}ifelse
+
 	dup 0 gt{
 		0 exch a1 a0 arcn
 	}{
@@ -485,6 +494,7 @@ L3? dup dup{save exch}if
 	
 	fill
 }bd
+
 /calcmaxs
 {	% calculate maximum distance vector from origin to corner points
 	% of bbox
@@ -494,6 +504,7 @@ L3? dup dup{save exch}if
 	xmax dup mul ymax dup mul add sqrt		% (xmax2 + ymax2)
 	max max max								% maximum value
 }bd
+
 /sh3
 {	% emulation of shading type 3. Assumes shading dictionary is top dictionary on the dict stack
 	/Coords load aload pop 	% x0 y0 r1 x1 y1 r2
@@ -544,6 +555,7 @@ L3? dup dup{save exch}if
 	/xmax xs
 	/ymin xs
 	/xmin xs
+
 	% Arc angle atan( sqrt((dx*dx + dy*dy) - dr*dr), dr)
 	dx dup mul r2 r1 sub dup mul sub dup 0 gt
 	{
@@ -555,6 +567,7 @@ L3? dup dup{save exch}if
 		/a0 0 store
 		/a1 360 store		
 	}ifelse		
+
 	currentdict/Extend known
 	{
 		/Extend load 0 get r1 0 gt and	% no need to extend if the radius of the first end is 0
@@ -610,6 +623,7 @@ L3? dup dup{save exch}if
 			}sh3tp get exec	% execute the extend at beginning proc for our shading type
 		}if
 	}if
+
 	% now do the shading
 	/d0 0 store
 	/r0 r1 store
@@ -637,6 +651,7 @@ L3? dup dup{save exch}if
 		/r0 r0 ri add store
 	}for
 	pop	% pop our function dict
+
 	% handle Extend
 	currentdict/Extend known
 	{
@@ -718,7 +733,9 @@ L3? dup dup{save exch}if
 		}ifelse
 	end
 }bd
+
 % end of language level 2 ONLY code
+
 {restore}if not dup{save exch}if
 % languagelevel3 ONLY code goes here
 	L3?{	% we do these loads conditionally or else they will fail on a level 2 printer
@@ -727,6 +744,7 @@ L3? dup dup{save exch}if
 		/csQ/cliprestore ld
 	}if
 {restore}if
+
 %currentdict dup maxlength exch length sub (number of extra slots in md = )print == flush	% *** how many entries are free
 end
 setpacking
@@ -818,6 +836,7 @@ userdict dup(\004)cvn{}put (\004\004)cvn{}put
 } stopped cleartomark
 [{
 %%BeginFeature: *OKResolution 600x600dpi
+
     << /HWResolution [600 600] >> setpagedevice
     << /cupsColorOrder 0/cupsColorSpace 1/cupsBitsPerColor 8 >> setpagedevice
 %%EndFeature
@@ -831,12 +850,15 @@ userdict dup(\004)cvn{}put (\004\004)cvn{}put
 <</PageSize[595 842]/ImagingBBox null>>setpagedevice
 %%EndFeature
 } stopped cleartomark
+% x y w h ESPrc - Clip to a rectangle.
 userdict/ESPrc/rectclip where{pop/rectclip load}
 {{newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
 neg 0 rlineto closepath clip newpath}bind}ifelse put
+% x y w h ESPrf - Fill a rectangle.
 userdict/ESPrf/rectfill where{pop/rectfill load}
 {{gsave newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
 neg 0 rlineto closepath fill grestore}bind}ifelse put
+% x y w h ESPrs - Stroke a rectangle.
 userdict/ESPrs/rectstroke where{pop/rectstroke load}
 {{gsave newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto
 neg 0 rlineto closepath stroke grestore}bind}ifelse put
@@ -1225,6 +1247,7 @@ eeefeff0f0f1f1f2f3f3f4f4f5f5f6f6f7f8f8f9f9fafafbfcfcfdfdfefeffff
 >  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
  cvi 3 index exch get 4 -1 roll 3 -1 roll get
  dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
 { 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
  1 index 1 index ge { exch pop } { pop } ifelse < 
 0000000000000000000000000000000000000000000000000000000000000000
@@ -1262,6 +1285,7 @@ eeefeff0f0f1f1f2f3f3f4f4f5f5f6f6f7f8f8f9f9fafafbfcfcfdfdfefeffff
 >  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
  cvi 3 index exch get 4 -1 roll 3 -1 roll get
  dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
 { 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
  1 index 1 index ge { exch pop } { pop } ifelse < 
 0000000000000000000000000000000000000000000000000000000000000000
@@ -3013,9 +3037,4 @@ end
 %%Trailer
 %%Pages: 21
 %%BoundingBox: 0 0 595 842
-%%Trailer
-cleartomark
-countdictstack
-exch sub { end } repeat
-restore
 %%EOF
