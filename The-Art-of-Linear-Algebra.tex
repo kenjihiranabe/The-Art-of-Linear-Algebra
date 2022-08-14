@@ -17,6 +17,9 @@
 \newcommand\mat{{\sf MATLAB}}
 %
 
+% prepare to move figures
+\graphicspath{ {figs/} }
+
 \begin{document}
 \title{The Art of Linear Algebra\\
 \vspace{5pt}
@@ -44,8 +47,8 @@ in ``Linear Algebra for Everyone".\footnote{``Linear Algebra for Everyone":
 This is aimed at promoting understanding of vector/matrix calculations
 and algorithms from the\linebreak perspectives of matrix factorizations.
 They include Column-Row ($\bm{CR}$), Gaussian Elimination ($\bm{LU}$),
-Gram-Schmidt Orthogonalization ($\bm{QR}$), Eigenvalues and Diagonalization ($\bm{Q \Lambda Q^\mathbf{T}}$),
-and Singular Value Decomposition ($\bm{U \Sigma V^\mathbf{T}}$).
+Gram-Schmidt Orthogonalization ($\bm{QR}$), Eigenvalues and Diagonalization ($\bm{Q \Lambda Q\transp}$),
+and Singular Value Decomposition ($\bm{U \Sigma V\transp}$).
 \end{abstract}
 
 \section*{Foreword}
@@ -116,6 +119,9 @@ in colored circles.
   \caption{Vector times Vector - (v1), (v2)}
 \end{figure}
 
+(v1) is a elementary operation of two vectors, but (v2) multiplies the column to the row
+and produce a rank 1 matrix. Knowing this outer product (v2) is the key for the later sections.
+
 \section{Matrix times Vector -- 2 Ways}
 
 A matrix times a vector creates a vector of three dot products (Mv1)
@@ -148,9 +154,9 @@ The products fill the row space of $A$ denoted as $\mathbf{C}(A\transp)$.
 The solution space of $yA=0$ is the left-nullspace of $A$ denoted as $\mathbf{N}(A\transp)$.
 
 
-The four subspaces consists of $\mathbf{N}(A)$ + $\mathbf{C}(A^\mathbf{T})$ 
+The four subspaces consists of $\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ 
 (which are perpendicular to each other) in $\mathbb{R}^n$ and
-$\mathbf{N}(A^\mathbf{T})$ + $\mathbf{C}(A)$ in $\mathbb{R}^m$
+$\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ in $\mathbb{R}^m$
 (which are perpendicular to each other).
 
 
@@ -230,7 +236,7 @@ This pattern appears when you solve differential equations and recurrence equati
 In both cases, the solutions are expressed with
 eigenvalues ($\lambda_1, \lambda_2, \lambda_3$), 
 eigenvectors $X=\begin{bmatrix} \bm{x}_1 & \bm{x}_2 & \bm{x}_3 \end{bmatrix}$ of $A$, and
-the coefficients $c=\begin{bmatrix} c_1 & c_2 & c_3 \end{bmatrix}^\mathbf{T}$
+the coefficients $c=\begin{bmatrix} c_1 & c_2 & c_3 \end{bmatrix}\transp$
 which are the coordinates of the initial condition $\bm{u}(0)=\bm{u}_0$ in terms of
 the eigenvectors $X$.
 
@@ -273,7 +279,7 @@ More details are discussed in the next section.
 \begin{itemize}
   \item Preface p.vii, The Plan for the Book.
 \end{itemize}
-$A=CR, A=LU, A=QR, A=Q \Lambda Q^\mathbf{T}\, A=U \Sigma V^\mathbf{T}$ are 
+$A=CR, A=LU, A=QR, A=Q \Lambda Q\transp\, A=U \Sigma V\transp$ are 
 illustrated one by one.
 
 \begin{figure}[H]
@@ -431,8 +437,8 @@ procedure goes on.
 
 \begin{align*}
   \bm{q}_1 &= \bm{a}_1/|\bm{a}_1| \\
-  \bm{q}_2 &= \bm{a}_2 - (\bm{q}_1^\mathbf{T} \bm{a}_2)\bm{q}_1 , \quad \bm{q}_2 = \bm{q}_2/|\bm{q}_2| \\
-  \bm{q}_3 &= \bm{a}_3 - (\bm{q}_1^\mathbf{T} \bm{a}_3)\bm{q}_1 - (\bm{q}_2^\mathbf{T} \bm{a}_3)\bm{q}_2, \quad \bm{q}_3 = \bm{q}_3/|\bm{q}_3|
+  \bm{q}_2 &= \bm{a}_2 - (\bm{q}_1\transp \bm{a}_2)\bm{q}_1 , \quad \bm{q}_2 = \bm{q}_2/|\bm{q}_2| \\
+  \bm{q}_3 &= \bm{a}_3 - (\bm{q}_1\transp \bm{a}_3)\bm{q}_1 - (\bm{q}_2\transp \bm{a}_3)\bm{q}_2, \quad \bm{q}_3 = \bm{q}_3/|\bm{q}_3|
 \end{align*}
 
 or you can write:
@@ -458,7 +464,7 @@ The original $A$ becomes $QR$: orthogonal times triangular.
            &        & r_{33}
   \end{bmatrix} = QR\\
   \\
-  Q Q^\mathbf{T}=Q^\mathbf{T} Q = I
+  Q Q\transp=Q\transp Q = I
 \end{gather*}
 
 \begin{figure}[H]
@@ -474,7 +480,7 @@ See Pattern 1 (P1) again for the graphic interpretation.
 
 \clearpage
 
-\subsection{$\boldsymbol{S=Q \Lambda Q^\mathbf{T}}$}
+\subsection{$\boldsymbol{S=Q \Lambda Q\transp}$}
 
 All symmetric matrices $S$ must have real eigenvalues and orthogonal eigenvectors.
 The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are in $Q$. 
@@ -484,7 +490,7 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
 \end{itemize}
 
 \begin{align*}
-  S = Q \Lambda Q^\mathbf{T}
+  S = Q \Lambda Q\transp
 &= \begin{bmatrix}
     | & | & |\\
     \bm{q}_1 & \bm{q}_2 & \bm{q}_3\\
@@ -496,9 +502,9 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
            & & \lambda_3
   \end{bmatrix}
   \begin{bmatrix}
-  - \bm{q}_1^\mathbf{T} -\\
-  - \bm{q}_2^\mathbf{T} -\\
-  - \bm{q}_3^\mathbf{T} -
+  - \bm{q}_1\transp -\\
+  - \bm{q}_2\transp -\\
+  - \bm{q}_3\transp -
   \end{bmatrix}\\
   \\
   &=
@@ -508,7 +514,7 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
     |
   \end{bmatrix}
   \begin{bmatrix}
-    - \bm{q}_1^\mathbf{T} - 
+    - \bm{q}_1\transp - 
   \end{bmatrix}
   +
   \lambda_2 \begin{bmatrix}
@@ -517,7 +523,7 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
   |
   \end{bmatrix}
   \begin{bmatrix}
-  - \bm{q}_2^\mathbf{T} -
+  - \bm{q}_2\transp -
   \end{bmatrix} 
   +
   \lambda_3 \begin{bmatrix}
@@ -526,41 +532,41 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
     |
   \end{bmatrix}
   \begin{bmatrix}
-    - \bm{q}_3^\mathbf{T} -
+    - \bm{q}_3\transp -
   \end{bmatrix} \\
 &= \lambda_1 P_1 + \lambda_2 P_2 + \lambda_3 P_3
 \end{align*}
 
 \begin{equation*}
-  P_1=\bm{q}_1 \bm{q}_1^\mathbf{T}, \quad P_2=\bm{q}_2 \bm{q}_2^\mathbf{T}, \quad P_3=\bm{q}_3 \bm{q}_3^\mathbf{T}
+  P_1=\bm{q}_1 \bm{q}_1\transp, \quad P_2=\bm{q}_2 \bm{q}_2\transp, \quad P_3=\bm{q}_3 \bm{q}_3\transp
 \end{equation*}
 
 
 \begin{figure}[H]
   \includegraphics[keepaspectratio, width=\linewidth]{EVD.eps}
-  \caption{$S=Q \Lambda Q^\mathbf{T}$}
+  \caption{$S=Q \Lambda Q\transp$}
 \end{figure}
 
 A symmetric matrix $S$ is diagonalized into $\Lambda$  by an orthogonal matrix $Q$
-and its transpose. And it is broken down into a combination of rank 1 projection matrices $P=qq^\mathbf{T}$.
+and its transpose. And it is broken down into a combination of rank 1 projection matrices $P=qq\transp$.
 This is the spectral theorem.
 
 Note that Pattern 4 (P4) is working for the decomposition.
 
 \begin{gather*}
-  S=S^\mathbf{T} = \lambda_1 P_1 + \lambda_2 P_2 + \lambda_3 P_3\\
-  QQ^\mathbf{T} = P_1 + P_2 + P_3 = I \\
+  S=S\transp = \lambda_1 P_1 + \lambda_2 P_2 + \lambda_3 P_3\\
+  QQ\transp = P_1 + P_2 + P_3 = I \\
   P_1 P_2 = P_2 P_3 = P_3 P_1 = O\\
-  P_1^2 =P_1=P_1^\mathbf{T}, \quad P_2^2=P_2=P_2^\mathbf{T}, \quad P_3^2=P_3=P_3^\mathbf{T}
+  P_1^2 =P_1=P_1\transp, \quad P_2^2=P_2=P_2\transp, \quad P_3^2=P_3=P_3\transp
 \end{gather*}
 
 \clearpage
 
-\subsection{$\boldsymbol{A=U \Sigma V^\mathbf{T}}$}
+\subsection{$\boldsymbol{A=U \Sigma V\transp}$}
 
 All matrices including rectangular ones have a singular value decomposition (SVD).
 
-$A=U \Sigma V^\mathbf{T}$ has the singular vectors of $A$ in $U$ and $V$.
+$A=U \Sigma V\transp$ has the singular vectors of $A$ in $U$ and $V$.
 And its singular values in $\Lambda$.
 
 \begin{itemize}
@@ -570,16 +576,16 @@ And its singular values in $\Lambda$.
 
 \begin{figure}[H]
   \includegraphics[keepaspectratio, width=\linewidth]{SVD.eps}
-  \caption{$A=U \Sigma V^\mathbf{T}$}
+  \caption{$A=U \Sigma V\transp$}
 \end{figure}
 
-You can find $V$ as an orthonormal basis of $\mathbb{R}^n$ (eigenvectors of $A^\mathbf{T}A$),
-and $U$ as an orthonormal basis of $\mathbb{R}^m$ (eigenvectors of $AA^\mathbf{T}$).
+You can find $V$ as an orthonormal basis of $\mathbb{R}^n$ (eigenvectors of $A\transp A$),
+and $U$ as an orthonormal basis of $\mathbb{R}^m$ (eigenvectors of $AA\transp$).
 Together they diagonalize $A$ into $\Sigma$.
 This is also expressed as a combination of rank 1 matrices.
 
 \begin{align*}
-  A = U \Sigma V^\mathbf{T} =
+  A = U \Sigma V\transp =
   \begin{bmatrix}
     | & | & |\\
     \bm{u}_1 & \bm{u}_2 & \bm{u}_3\\
@@ -591,8 +597,8 @@ This is also expressed as a combination of rank 1 matrices.
            & &
   \end{bmatrix}
   \begin{bmatrix}
-  - \bm{v}_1^\mathbf{T} -\\
-  - \bm{v}_2^\mathbf{T} -
+  - \bm{v}_1\transp -\\
+  - \bm{v}_2\transp -
   \end{bmatrix}
   & =
   \sigma_1 \begin{bmatrix}
@@ -601,7 +607,7 @@ This is also expressed as a combination of rank 1 matrices.
     |
   \end{bmatrix}
   \begin{bmatrix}
-    - \bm{v}_1^\mathbf{T} - 
+    - \bm{v}_1\transp - 
   \end{bmatrix}
   +
   \sigma_2 \begin{bmatrix}
@@ -610,16 +616,16 @@ This is also expressed as a combination of rank 1 matrices.
   |
   \end{bmatrix}
   \begin{bmatrix}
-  - \bm{v}_2^\mathbf{T} -
+  - \bm{v}_2\transp -
   \end{bmatrix} \\
-& = \sigma_1 \bm{u}_1 \bm{v}_1^\mathbf{T} + \sigma_2 \bm{u}_2 \bm{v}_2^\mathbf{T}
+& = \sigma_1 \bm{u}_1 \bm{v}_1\transp + \sigma_2 \bm{u}_2 \bm{v}_2\transp
 \end{align*}
 
 Note that:
 
 \begin{align*}
-  U U^\mathbf{T} &= I_m \\
-  V V^\mathbf{T} &= I_n
+  U U\transp &= I_m \\
+  V V\transp &= I_n
 \end{align*}
 
 See Pattern 4 (P4) for the graphic notation.

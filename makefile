@@ -32,12 +32,7 @@ PSJ=$(PS:%.ps=%-j.ps)
 %.ps: %.pptx
 	@echo "*** .pptx is new !! Print out $< to PostScript(.ps, without version name), then make again ***"
 
-#$(ILLUST).ps: $(ILLUST).pptx
-#$(WORLD).ps: $(WORLD)-v1.4.2.pptx
-#	@echo "*** Print out $< to PostScript(.ps, without version name), then make again ***"
-#$(MAP).ps: $(MAP)-v1.1.pptx
-#	@echo "*** Print out $< to PostScript(.ps, without version name), then make again ***"
-
+# split illlustration.ps file into pages and name them
 ViewingMatrix-4Ways.ps: $(ILLUST).ps
 	psselect -p 2 $< $@
 ViewingMatrix-4Ways-j.ps: $(ILLUST)-j.ps
@@ -157,18 +152,11 @@ out/$(ART).dvi: $(ART).tex $(EPS)
 out/$(ART)-j.dvi: $(ART)-j.tex $(EPSJ)
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART)-j.tex
 
-#out/%.dvi: %.tex
-#	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $<
-
 # uplatex -synctex=1 -halt-on-error -silent -file-line-error -output-directory=out $<
-# https://qiita.com/rainbartown/items/d7718f12d71e688f3573#comment-7c2f42254e84b43d3175
+# see https://qiita.com/rainbartown/items/d7718f12d71e688f3573#comment-7c2f42254e84b43d3175
 
 eps: $(EPS)
 epsj: $(EPSJ)
-
-#$(EPS): $(PS)
-#
-#S(EPSJ): $(PSJ)
 
 %.eps: %.ps
 	ps2eps -B -l -f $<
