@@ -156,7 +156,7 @@ $m \times n$行列には，「$1$ つの行列」，「$mn$ 個のスカラー�
 $A$の左零空間と呼ばれ，$\mathbf{N}(A\transp)$ と記述される．(vM1)の右辺を$\bi{0}$とすることによって，
 列空間と直交する空間であることが分かる．
 
-本書の最初のハイライトである「4つの部分空間」は， $\mathbb{R}^n$ を2つの直交する部分空間で直和分解する
+本書の最初のハイライトである「4つの基本部分空間」は， $\mathbb{R}^n$ を2つの直交する部分空間で直和分解する
 $\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ と，$\mathbb{R}^m$を2つの直交する部分空間で直和分解する
 $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 
@@ -202,10 +202,10 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 パターン2は(MM3)と(vM2)の組み合わせである．パターン1が列基本変形（変換行列を右から掛ける），
 パターン2が行基本変形（変換行列を左から掛ける）に対応している．
 
-このよく出てくる応用として、次のパターン1', 2' は特殊例である。
+このよく出てくる応用として、次のパターン(P1'), (P2')がある．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern11-22.eps}
+  \includegraphics[keepaspectratio, width=\linewidth]{Pattern11-22-j.eps}
   \caption{Pattern 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
 \end{figure}
 
@@ -217,7 +217,8 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
   \caption{パターン 3 - (P3)}
 \end{figure}
 
-このパターンは，線形微分方程式や漸化式に対応する．
+このパターンは，線形微分方程式や漸化式に対応して頻出する．「解の基底を列ベクトルとする行列」，
+「固有値の式を含む対角行列」，「初期値の固有ベクトル方向成分の列ベクトル」の積である．
 
 \begin{itemize}
   \item 6章 固有値と固有ベクトル
@@ -232,7 +233,7 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 両方の式において，解は $A$ の固有値 ($\lambda_1, \lambda_2, \lambda_3$) と固有ベクトル
 $X=\begin{bmatrix} \bm{x}_1 & \bm{x}_2 & \bm{x}_3 \end{bmatrix}$，および，初期値
 $\bm{u}(0)=\bm{u}_0$ で決定される係数$\bm{c}=(c_1, c_2, c_3)$ によって表現することができる．
-$\bm{c}$は $X$ を基底としたときの初期値 $\bm{u}_0$ の座標である．
+$\bm{c}$は $X$ を基底としたときの初期値 $\bm{u}_0$ の成分（座標）である．
 
 \begin{equation*}
   \bm{u}_0 = c_1 \bm{x}_1 + c_2 \bm{x}_2 + c_3 \bm{x}_3
