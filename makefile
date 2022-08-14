@@ -3,6 +3,7 @@ ILLUST=Illustrations
 WORLD=MatrixWorld
 MAP=MapofEigenvalues
 
+# two product target files
 all: $(ART).pdf $(ART)-j.pdf
 
 PS=ViewingMatrix-4Ways.ps\
@@ -141,11 +142,6 @@ EPSJ=$(PSJ:-j.ps=-j.eps)
 %.pdf: out/%.dvi
 	dvipdfmx -p a4 -q $<
 
-
-#$(ART).pdf: out/$(ART).dvi
-#out/$(ART).dvi: $(EPS) $(ART).tex
-#	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $<
-
 out/$(ART).dvi: $(ART).tex $(EPS)
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART).tex
 
@@ -164,6 +160,7 @@ epsj: $(EPSJ)
 clean:
 	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/*
 
+# just for testing and debugging
 echo:
 	@echo "eps = $(EPS)"
 	@echo "epsj = $(EPSJ)"
