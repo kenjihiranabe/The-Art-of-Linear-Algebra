@@ -10,9 +10,9 @@ in "Linear Algebra for Everyone".
 
 This is aimed at promoting understanding of vector/matrix calculations
 and algorithms from the perspectives of matrix factorizations.
-They include Column-Row ($CR$), Gaussian Elimination ($LU$),
-Gram-Schmidt Orthogonalization ($QR$), Eigenvalues and Diagonalization ($Q \Lambda Q^T$),
-and Singular Value Decomposition ($U \Sigma V^T$).
+They include Column-Row (CR), Gaussian Elimination (LU),
+Gram-Schmidt Orthogonalization (QR), Eigenvalues and Diagonalization (QΛQ'),
+and Singular Value Decomposition (UΣV').
 
 ![5 Factorizations](5-Factorizations.png)
 
