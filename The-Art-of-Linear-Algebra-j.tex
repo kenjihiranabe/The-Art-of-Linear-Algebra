@@ -6,6 +6,7 @@
 \usepackage{amsmath, amsfonts}
 \usepackage[top=20truemm,bottom=20truemm,left=25truemm,right=25truemm]{geometry}
 \usepackage[dvipdfmx]{hyperref,graphicx}
+\usepackage{pxjahyper}
 
 % incorporated from Linear Algebra for Everyone 7/18/2022
 \newcommand{\bi}[1]{\hbox{\boldmath$#1$}}
@@ -343,7 +344,7 @@ $R$の行数が2であるから，行ランクも2である．すなわち，$A$
 \text{let} \; L = E^{-1}, \quad  A &= LU
 \end{align*}
 
-すなわち，$Ax=b$ を２ステップで解いている．ステップ1で全身消去 $Lc=b$，ステップ2で後退代入 $Ux=c$ である．
+すなわち，$Ax=b$ を２ステップで解いている．ステップ1で前進消去 $Lc=b$，ステップ2で後退代入 $Ux=c$ である．
 
 \begin{itemize}
   \item 2.3節 行列計算と $\bm{A=LU}$
