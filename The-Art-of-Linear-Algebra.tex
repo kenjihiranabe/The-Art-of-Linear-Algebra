@@ -138,9 +138,9 @@ as well as a linear combination (Mv2) of the column vectors of $A$.
 \end{figure}
 
 At first, you learn (Mv1). But when you get used to viewing it as (Mv2),
-you can understand $A\bi{x}$ as a linear combination of the columns of $A$.
+you can understand $A\bm{x}$ as a linear combination of the columns of $A$.
 Those products fill the column space of $A$  denoted as $\mathbf{C}(A)$.
-The solution space of $A\bi{x}=\bi{0}$ is the nullspace of $A$ denoted as $\mathbf{N}(A)$.
+The solution space of $A\bm{x}=\bm{0}$ is the nullspace of $A$ denoted as $\mathbf{N}(A)$.
 
 Also, (vM1) and (vM2) shows the same patterns for a row vector times a matrix.
 
@@ -346,7 +346,7 @@ and all the rows of $A$ are linear combinations of the two rows of $R$.
 
 \subsection{$\boldsymbol{A=LU}$}
 
-Solving $\bi{x}=\bi{b}$  via Gaussian elimination can be expressed as a $LU$ factorization.
+Solving $\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as a $LU$ factorization.
 Usually, you apply elementary row operation matrices ($E$) from left of $A$ to make upper trianglar $U$.
 
 \begin{align*}
@@ -355,7 +355,7 @@ Usually, you apply elementary row operation matrices ($E$) from left of $A$ to m
 \text{let} \; L = E^{-1}, \quad  A &= LU
 \end{align*}
 
-Now solve $Ax=b$ in 2 steps: 1) forward $Lc=b$ and 2) back $Ux=c$.
+Now solve $A\bm{x}=\bm{b}$ in 2 steps: 1) forward $L\bm{c}=\bm{b}$ and 2) back $U\bm{x}=\bm{c}$.
 
 
 \begin{itemize}
