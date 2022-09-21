@@ -1,10 +1,12 @@
+# Works on Mac
 ART=The-Art-of-Linear-Algebra
 ILLUST=Illustrations
 WORLD=MatrixWorld
 MAP=MapofEigenvalues
-#PSSELECT=psselect -p
 PSSELECT=psselect
-PS2EPS=ps2eps -B -l -f -R=-
+PS2EPS=ps2eps -B -l -f
+#PS2EPS=ps2eps -B -l -f -R=+ vertical
+#PS2EPS=ps2eps -B -l -f -R=- horizontal
 
 # two product target files
 all: $(ART).pdf $(ART)-j.pdf
@@ -34,7 +36,7 @@ PS=ViewingMatrix-4Ways.ps\
 PSJ=$(PS:%.ps=%-j.ps)
 
 %.ps: %.pptx
-	@echo "*** .pptx is new !! Print out $< to PostScript(.ps, without version name), then make again ***"
+	@echo "*** .pptx is new !! Print out $< to PostScript(.ps see PowerPointSetting.png for setting), then make again ***"
 
 # split illlustration.ps file into pages and name them
 ViewingMatrix-4Ways.ps: $(ILLUST).ps
