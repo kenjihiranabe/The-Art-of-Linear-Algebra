@@ -2,6 +2,9 @@ ART=The-Art-of-Linear-Algebra
 ILLUST=Illustrations
 WORLD=MatrixWorld
 MAP=MapofEigenvalues
+#PSSELECT=psselect -p
+PSSELECT=psselect
+PS2EPS=ps2eps -B -l -f -R=-
 
 # two product target files
 all: $(ART).pdf $(ART)-j.pdf
@@ -35,105 +38,105 @@ PSJ=$(PS:%.ps=%-j.ps)
 
 # split illlustration.ps file into pages and name them
 ViewingMatrix-4Ways.ps: $(ILLUST).ps
-	psselect -p 2 $< $@
+	$(PSSELECT) 2 $< $@
 ViewingMatrix-4Ways-j.ps: $(ILLUST)-j.ps
-	psselect -p 2 $< $@
+	$(PSSELECT) 2 $< $@
 #
 VectorTimesVector.ps: $(ILLUST).ps
-	psselect -p 3 $< $@
+	$(PSSELECT) 3 $< $@
 VectorTimesVector-j.ps: $(ILLUST)-j.ps
-	psselect -p 3 $< $@
+	$(PSSELECT) 3 $< $@
 #
 MatrixTimesVector.ps: $(ILLUST).ps
-	psselect -p 4 $< $@
+	$(PSSELECT) 4 $< $@
 #
 MatrixTimesVector-j.ps: $(ILLUST)-j.ps
-	psselect -p 4 $< $@
+	$(PSSELECT) 4 $< $@
 #
 VectorTimesMatrix.ps: $(ILLUST).ps
-	psselect -p 5 $< $@
+	$(PSSELECT) 5 $< $@
 VectorTimesMatrix-j.ps: $(ILLUST)-j.ps
-	psselect -p 5 $< $@
+	$(PSSELECT) 5 $< $@
 #
 4-Subspaces.ps: $(ILLUST).ps
-	psselect -p 6 $< $@
+	$(PSSELECT) 6 $< $@
 4-Subspaces-j.ps: $(ILLUST)-j.ps
-	psselect -p 6 $< $@
+	$(PSSELECT) 6 $< $@
 #
 MatrixTimesMatrix.ps: $(ILLUST).ps
-	psselect -p 7 $< $@
+	$(PSSELECT) 7 $< $@
 MatrixTimesMatrix-j.ps: $(ILLUST)-j.ps
-	psselect -p 7 $< $@
+	$(PSSELECT) 7 $< $@
 #
 Pattern12.ps: $(ILLUST).ps
-	psselect -p 8 $< $@
+	$(PSSELECT) 8 $< $@
 Pattern12-j.ps: $(ILLUST)-j.ps
-	psselect -p 8 $< $@
+	$(PSSELECT) 8 $< $@
 #
 Pattern11-22.ps: $(ILLUST).ps
-	psselect -p 9 $< $@
+	$(PSSELECT) 9 $< $@
 Pattern11-22-j.ps: $(ILLUST)-j.ps
-	psselect -p 9 $< $@
+	$(PSSELECT) 9 $< $@
 #
 Pattern3.ps: $(ILLUST).ps
-	psselect -p 10 $< $@
+	$(PSSELECT) 10 $< $@
 Pattern3-j.ps: $(ILLUST)-j.ps
-	psselect -p 10 $< $@
+	$(PSSELECT) 10 $< $@
 #
 Pattern4.ps: $(ILLUST).ps
-	psselect -p 11 $< $@
+	$(PSSELECT) 11 $< $@
 Pattern4-j.ps: $(ILLUST)-j.ps
-	psselect -p 11 $< $@
+	$(PSSELECT) 11 $< $@
 #
 5-Factorizations.ps: $(ILLUST).ps
-	psselect -p 12 $< $@
+	$(PSSELECT) 12 $< $@
 5-Factorizations-j.ps: $(ILLUST)-j.ps
-	psselect -p 12 $< $@
+	$(PSSELECT) 12 $< $@
 #
 CR1.ps: $(ILLUST).ps
-	psselect -p 13 $< $@
+	$(PSSELECT) 13 $< $@
 CR1-j.ps: $(ILLUST)-j.ps
-	psselect -p 13 $< $@
+	$(PSSELECT) 13 $< $@
 #
 CR2.ps: $(ILLUST).ps
-	psselect -p 14 $< $@
+	$(PSSELECT) 14 $< $@
 CR2-j.ps: $(ILLUST)-j.ps
-	psselect -p 14 $< $@
+	$(PSSELECT) 14 $< $@
 #
 LU1.ps: $(ILLUST).ps
-	psselect -p 15 $< $@
+	$(PSSELECT) 15 $< $@
 LU1-j.ps: $(ILLUST)-j.ps
-	psselect -p 15 $< $@
+	$(PSSELECT) 15 $< $@
 #
 LU2.ps: $(ILLUST).ps
-	psselect -p 16 $< $@
+	$(PSSELECT) 16 $< $@
 LU2-j.ps: $(ILLUST)-j.ps
-	psselect -p 16 $< $@
+	$(PSSELECT) 16 $< $@
 #
 QR.ps: $(ILLUST).ps
-	psselect -p 17 $< $@
+	$(PSSELECT) 17 $< $@
 QR-j.ps: $(ILLUST)-j.ps
-	psselect -p 17 $< $@
+	$(PSSELECT) 17 $< $@
 #
 EVD.ps: $(ILLUST).ps
-	psselect -p 18 $< $@
+	$(PSSELECT) 18 $< $@
 EVD-j.ps: $(ILLUST)-j.ps
-	psselect -p 18 $< $@
+	$(PSSELECT) 18 $< $@
 #
 SVD.ps: $(ILLUST).ps
-	psselect -p 19 $< $@
+	$(PSSELECT) 19 $< $@
 SVD-j.ps: $(ILLUST)-j.ps
-	psselect -p 19 $< $@
+	$(PSSELECT) 19 $< $@
 #
 $(WORLD).ps: $(ILLUST).ps
-	psselect -p 20 $< $@
+	$(PSSELECT) 20 $< $@
 $(WORLD)-j.ps: $(ILLUST)-j.ps
-	psselect -p 20 $< $@
+	$(PSSELECT) 20 $< $@
 #
 $(MAP).ps: $(ILLUST).ps
-	psselect -p 21 $< $@
+	$(PSSELECT) 21 $< $@
 $(MAP)-j.ps: $(ILLUST)-j.ps
-	psselect -p 21 $< $@
+	$(PSSELECT) 21 $< $@
 
 
 EPS=$(PS:.ps=.eps)
@@ -155,7 +158,7 @@ eps: $(EPS)
 epsj: $(EPSJ)
 
 %.eps: %.ps
-	ps2eps -B -l -f $<
+	$(PS2EPS) $<
 
 clean:
 	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/*
