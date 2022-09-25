@@ -27,5 +27,5 @@ Also includes other graphics.
 ## Matrix World
 
 ![Matrix World](MatrixWorld.png)
-- Avaialble in PDF "[MatrixWorld](MatrixWorld-v1.4.2-LAFE.pdf)"
+- Avaialble in PDF "[MatrixWorld](MatrixWorld.pdf)"
 
