@@ -37,6 +37,7 @@ PSJ=$(PS:%.ps=%-j.ps)
 
 %.ps: %.pptx
 	@echo "*** .pptx is new !! Print out $< to PostScript(.ps see PowerPointSetting.png for setting), then make again ***"
+	open PowerPointSetting.png
 
 # split illlustration.ps file into pages and name them
 ViewingMatrix-4Ways.ps: $(ILLUST).ps
