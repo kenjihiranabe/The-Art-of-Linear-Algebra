@@ -51,7 +51,7 @@ Gilbert Strang 教授の書籍『Linear Algebra for Everyone』
 特異値分解（$\bm{U \Sigma V\transp}$）の5分解が含まれる．
 \end{abstract}
 
-\section*{序文}
+\section*{Preface}
 Kenji Hiranabe による行列操作の図解は，線形代数を理解するのに大変優れた手法である．
 初学者は行列の積を「行と列の内積」のように最初理解するが，
 見方はそれだけではない．「線形結合」や「ランク1行列」によって線形代数のさらなる理解が深まる．
@@ -173,7 +173,7 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
   \caption{4つの基本部分空間}
 \end{figure}
 
-ランクについて，行ランクと列ランクが等しいことを示す $A=CR$ 分解(6.1)参照．
+ランクについては，行ランクと列ランクが等しいことを示す $A=CR$ 分解(6.1)参照．
 
 \section{2つの行列の積 -- 4 つの見方}
 
@@ -210,7 +210,7 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{Pattern11-22-j.eps}
-  \caption{Pattern 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
+  \caption{パターン 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
 \end{figure}
 
 (P1$^\prime$) では，行列の列に対角のスカラーが掛け算される．一方，
@@ -370,8 +370,6 @@ $C$の列数が2であるから，列ランクが2である．すなわち，$A$
 
 $R$の行数が2であるから，行ランクも2である．すなわち，$A$ のすべての行は$R$の行の線型結合である．
 
-\clearpage
-
 \subsection{$\boldsymbol{A=LU}$}
 
 ガウスの消去法によって $A\bm{x}=\bm{b}$ を解く．この仮定は $LU$ 分解として表現される．
@@ -448,8 +446,6 @@ $L$と$U$を計算するために，まず，$A$の第1行と第1列の外積に
 
 $LU$ から $A$ を再生するプロセスは，より簡単だ．
 
-\clearpage
-
 \subsection{$\boldsymbol{A=QR}$}
 
 $A=QR$ は $A$ の列を直交行列に変換して $Q$ に格納する．
@@ -501,7 +497,6 @@ $A=QR$ は $A$ の列を直交行列に変換して $Q$ に格納する．
 $A$ の列ベクトルは，正規直行化された $Q$ の列ベクトルへと変換される．
 $A$ の列ベクトルを再生するには，$Q$ と $R$ の掛け算を考えれば簡単である．
 ここで，パターン1 (P1) を再度見て視覚的に理解して欲しい．
-\clearpage
 
 \subsection{$\boldsymbol{S=Q \Lambda Q\transp}$}
 
@@ -581,8 +576,6 @@ $A$ の列ベクトルを再生するには，$Q$ と $R$ の掛け算を考え�
   P_1 P_2 = P_2 P_3 = P_3 P_1 = O\\
   P_1^2 =P_1=P_1\transp, \quad P_2^2=P_2=P_2\transp, \quad P_3^2=P_3=P_3\transp
 \end{gather*}
-
-\clearpage
 
 \subsection{$\boldsymbol{A=U \Sigma V\transp}$}
 

@@ -174,8 +174,6 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ in $\mathbb{R}^m$
 See $A=CR$ (Sec 6.1) for the rank $r$.
 
 
-\clearpage
-
 \section{Matrix times Matrix -- 4 Ways}
 
 ``Matrix times Vector" naturally extends to ``Matrix times Matrix".
@@ -191,9 +189,6 @@ See $A=CR$ (Sec 6.1) for the rank $r$.
   \includegraphics[scale=0.8]{MatrixTimesMatrix.eps}
   \caption{Matrix times Matrix - (MM1), (MM2), (MM3), (MM4)}
 \end{figure}
-
-\clearpage
-
 
 \section{Practical Patterns}
 
@@ -222,7 +217,7 @@ Both are variants of (P1) and (P2).
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.8]{Pattern3.eps}
+  \includegraphics[scale=0.9]{Pattern3.eps}
   \caption{Pattern 3 - (P3)}
 \end{figure}
 
@@ -384,8 +379,6 @@ and all the columns of $A$ are linear combinations of the two columns of $C$.
 And you see the row rank is two because there are only two independent rows in $R$
 and all the rows of $A$ are linear combinations of the two rows of $R$.
 
-\clearpage
-
 \subsection{$\boldsymbol{A=LU}$}
 
 Solving $A\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as an $LU$ factorization.
@@ -465,8 +458,6 @@ This leaves $A_2$. Do this recursively and decompose $A$ into the sum of rank 1 
 
 To rebuild $A$ from $L$ times $U$ is easy.
 
-\clearpage
-
 \subsection{$\boldsymbol{A=QR}$}
 
 $A=QR$ changes the columns of $A$ into perpendicular columns of $Q$, keeping $\bm{C}(A) = \bm{C}(Q)$.
@@ -522,8 +513,6 @@ Each column vector of $A$ can be rebuilt from $Q$ and the upper triangular matri
 
 See Pattern 1 (P1) again for the graphic interpretation.
 
-
-\clearpage
 
 \subsection{$\boldsymbol{S=Q \Lambda Q\transp}$}
 
@@ -605,8 +594,6 @@ Note that Pattern 4 (P4) is working for the decomposition.
   P_1 P_2 = P_2 P_3 = P_3 P_1 = O\\
   P_1^2 =P_1=P_1\transp, \quad P_2^2=P_2=P_2\transp, \quad P_3^2=P_3=P_3\transp
 \end{gather*}
-
-\clearpage
 
 \subsection{$\boldsymbol{A=U \Sigma V\transp}$}
 
