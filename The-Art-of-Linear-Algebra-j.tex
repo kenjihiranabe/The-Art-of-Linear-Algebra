@@ -70,7 +70,7 @@ $m \times n$行列には，「$1$ つの行列」，「$mn$ 個のスカラー�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=8cm]{ViewingMatrix-4Ways-j.eps}\\
+  \includegraphics[scale=0.8]{ViewingMatrix-4Ways-j.eps}\\
     \caption{行列の見方 -- 4 つ}
 \end{figure}
 
@@ -115,7 +115,7 @@ $m \times n$行列には，「$1$ つの行列」，「$mn$ 個のスカラー�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesVector-j.eps}
+  \includegraphics[scale=0.8]{VectorTimesVector-j.eps}
   \caption{2つのベクトルの積 - (v1), (v2)}
 \end{figure}
 
@@ -135,7 +135,8 @@ $m \times n$行列には，「$1$ つの行列」，「$mn$ 個のスカラー�
 \end{itemize} 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesVector-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{MatrixTimesVector-j.eps}
   \caption{行列とベクトルの積 - (Mv1), (Mv2)}
 \end{figure}
 
@@ -148,7 +149,8 @@ $m \times n$行列には，「$1$ つの行列」，「$mn$ 個のスカラー�
 同様に，(vM1) と (vM2) によって，行ベクトルと行列の積も捉えることができる．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesMatrix-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{VectorTimesMatrix-j.eps}
   \caption{ベクチョルと行列の積 - (vM1), (vM2)}
 \end{figure}
 
@@ -167,12 +169,11 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=8cm]{4-Subspaces-j.eps}
+  \includegraphics[scale=1.0]{4-Subspaces-j.eps}
   \caption{4つの基本部分空間}
 \end{figure}
 
 ランクについて，行ランクと列ランクが等しいことを示す $A=CR$ 分解(6.1)参照．
-\clearpage
 
 \section{2つの行列の積 -- 4 つの見方}
 
@@ -185,7 +186,8 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesMatrix-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{MatrixTimesMatrix-j.eps}
   \caption{2つの行列の積 - (MM1), (MM2), (MM3), (MM4)}
 \end{figure}
 
@@ -195,7 +197,8 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 後半の行列の分解をより直感的に理解できるようになる．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=16cm]{Pattern12-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern12-j.eps}
   \caption{パターン 1, 2 - (P1), (P1)}
 \end{figure}
 
@@ -205,7 +208,8 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 このよく出てくる応用として、次のパターン(P1'), (P2')がある．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern11-22-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern11-22-j.eps}
   \caption{Pattern 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
 \end{figure}
 
@@ -213,7 +217,8 @@ $\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ からなる．
 (P2$^\prime$) では，行列の行に対角のスカラーが掛け算される．この2つのパターンは，(P1)と(P2)から派生したものだ．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern3-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern3-j.eps}
   \caption{パターン 3 - (P3)}
 \end{figure}
 
@@ -257,7 +262,8 @@ $\bm{c}$は $X$ を基底としたときの初期値 $\bm{u}_0$ の成分（座�
 $XDc$ を理解するために，Figure 8 のパターン3(P3) を再度みよ．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern4-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern4-j.eps}
   \caption{パターン 4 - (P4)}
 \end{figure}
 
@@ -276,12 +282,42 @@ $XDc$ を理解するために，Figure 8 のパターン3(P3) を再度みよ�
 \end{itemize}
 $A=CR, A=LU, A=QR, A=Q \Lambda Q\transp, A=U \Sigma V\transp$ の5分解を図解しよう．
 
-\begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{5-Factorizations-j.eps}
-  \caption{5つの行列分解}
-\end{figure}
 
-\clearpage
+\begin{table}[h]
+  \begin{tabular}{lll}
+    \Large{\boldmath $A=CR$} & \includegraphics{A_CR.eps} &
+    \begin{tabular}{l}
+      独立列行列 $C$ と行簡約行列 $R$ の積\\行ランク $=$ 列ランクを示す
+    \end{tabular}\\
+
+    \Large{\boldmath $A=LU$} & \includegraphics{A_LU.eps} &
+    \begin{tabular}{l}
+      LU分解 $=$ ガウスの消去法\\下三角行列 $L$ と上三角行列 $U$
+    \end{tabular}\\
+
+    \Large{\boldmath $A=QR$} & \includegraphics{A_QR.eps} &
+    \begin{tabular}{l}
+      QR分解 $=$ グラム・シュミットの直交化\\直交行列 $Q$ と三角行列 $R$
+    \end{tabular}\\
+     
+    \Large{\boldmath $S=Q\Lambda Q\transp$} & \includegraphics{A_QLQT.eps} &
+    \begin{tabular}{l}
+      対称行列 $S$ の固有値分解\\固有ベクトル行列 $Q$ と固有値行列 $\Lambda$
+    \end{tabular}\\
+  
+    \Large{\boldmath $A=U\Sigma V\transp$} & \includegraphics{A_USVT.eps} &
+    \begin{tabular}{l}
+      どんな長方行列 $A$ にも使える特異値分解\\特異値行列 $\Sigma$
+    \end{tabular}
+  \end{tabular}
+  \caption{5つの行列分解}
+\end{table}
+
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[scale=0.8]{5-Factorizations-j.eps}
+%   \caption{5つの行列分解}
+% \end{figure}
 
 \subsection{$\boldsymbol{A=CR}$}
 
@@ -319,14 +355,16 @@ $A=CR$ によって，$A$ は $r$本の線形独立な列$C$と$r$本の線形�
 $A$ の各列を再生するには，$C$ の各列を組み合わせる．その組み合わせ係数が $R$ の各列に成分として表記されている．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR1-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{CR1-j.eps}
   \caption{$CR$の列ランク}
 \end{figure}
 
 $C$の列数が2であるから，列ランクが2である．すなわち，$A$のすべての列は$C$の列の線型結合である．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR2-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{CR2-j.eps}
   \caption{$CR$の行ランク}
 \end{figure}
 
@@ -393,7 +431,8 @@ L = E^{-1} \text{として} \; , \quad  A &= LU
  
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU1-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{LU1-j.eps}
 \caption{再帰的なランク1行列の「皮むき」}
 \end{figure}
 
@@ -402,7 +441,8 @@ $L$と$U$を計算するために，まず，$A$の第1行と第1列の外積に
 ランク1行列を抜き出していく．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU2-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{LU2-j.eps}
 \caption{$LU$ から $A$ を再生}
 \end{figure}
 
@@ -454,7 +494,8 @@ $A=QR$ は $A$ の列を直交行列に変換して $Q$ に格納する．
   Q Q\transp=Q\transp Q = I
 \end{gather*}
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{QR-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{QR-j.eps}
   \caption{$A=QR$}
 \end{figure}
 $A$ の列ベクトルは，正規直行化された $Q$ の列ベクトルへと変換される．
@@ -525,7 +566,8 @@ $A$ の列ベクトルを再生するには，$Q$ と $R$ の掛け算を考え�
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{EVD-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{EVD-j.eps}
   \caption{$S=Q \Lambda Q\transp$}
 \end{figure}
 
@@ -553,7 +595,8 @@ $A=U \Sigma V\transp$ という分解によって，$A$ の左右の特異ベク
 対応する特異値は対角行列 $\Lambda$ の対角成分に並ぶ．以下は，簡約形のSVDである．
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{SVD-j.eps}
+  \centering
+  \includegraphics[scale=0.8]{SVD-j.eps}
   \caption{$A=U \Sigma V\transp$}
 \end{figure}
 

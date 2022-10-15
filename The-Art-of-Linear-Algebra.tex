@@ -70,7 +70,7 @@ A matrix ($m \times n$) can be seen as $1$ matrix, $mn$ numbers, $n$ columns and
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=8cm]{ViewingMatrix-4Ways.eps}\\
+  \includegraphics[scale=0.8]{ViewingMatrix-4Ways.eps}\\
     \caption{Viewing a Matrix in 4 Ways}
 \end{figure}
 
@@ -114,7 +114,7 @@ in colored circles.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesVector.eps}
+  \includegraphics[scale=0.8]{VectorTimesVector.eps}
   \caption{Vector times Vector - (v1), (v2)}
 \end{figure}
 
@@ -132,7 +132,8 @@ as well as a linear combination (Mv2) of the column vectors of $A$.
 \end{itemize} 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesVector.eps}
+  \centering
+  \includegraphics[scale=0.8]{MatrixTimesVector.eps}
   \caption{Matrix times Vector - (Mv1), (Mv2)}
 \end{figure}
 
@@ -144,7 +145,8 @@ The solution space of $A\bm{x}=\bm{0}$ is the nullspace of $A$ denoted as $\math
 Also, (vM1) and (vM2) shows the same patterns for a row vector times a matrix.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{VectorTimesMatrix.eps}
+  \centering
+  \includegraphics[scale=0.8]{VectorTimesMatrix.eps}
   \caption{Vector times Matrix - (vM1), (vM2)}
 \end{figure}
 
@@ -185,7 +187,8 @@ See $A=CR$ (Sec 6.1) for the rank $r$.
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{MatrixTimesMatrix.eps}
+  \centering
+  \includegraphics[scale=0.8]{MatrixTimesMatrix.eps}
   \caption{Matrix times Matrix - (MM1), (MM2), (MM3), (MM4)}
 \end{figure}
 
@@ -198,7 +201,8 @@ Here, I show some practical patterns which allow you to capture
 the coming factorizations more intuitively.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern12.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern12.eps}
   \caption{Pattern 1, 2 - (P1), (P1)}
 \end{figure}
 
@@ -207,7 +211,8 @@ Pattern 2 is an extention of (MM3). Note that Pattern 1 is a column operation (m
 whereas Pattern 2 is a row operation (multiplying a matrix from left).
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern11-22.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern11-22.eps}
   \caption{Pattern 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
 \end{figure}
 
@@ -216,7 +221,8 @@ whereas (P2$^\prime$) multipies the diagonal numbers to the row of the matrx.
 Both are variants of (P1) and (P2).
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern3.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern3.eps}
   \caption{Pattern 3 - (P3)}
 \end{figure}
 
@@ -261,7 +267,8 @@ and the general solution of the two equations are:
 See Figure 8: Pattern 3 (P3) above again for $XDc$.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{Pattern4.eps}
+  \centering
+  \includegraphics[scale=0.8]{Pattern4.eps}
   \caption{Pattern 4 - (P4)}
 \end{figure}
 
@@ -281,12 +288,46 @@ More details are discussed in the next section.
 $A=CR, A=LU, A=QR, A=Q \Lambda Q\transp, A=U \Sigma V\transp$ are 
 illustrated one by one.
 
-\begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{5-Factorizations.eps}
-  \caption{The Five Factorizations}
-\end{figure}
+\begin{table}[h]
+  \begin{tabular}{lll}
+    \Large{\boldmath $A=CR$} & \includegraphics{A_CR.eps} &
+    \begin{tabular}{l}
+      Independent columns in $C$\\
+      Row echelon form in $R$\\
+      Leads to column rank = row rank
+    \end{tabular}\\
 
-\clearpage
+    \Large{\boldmath $A=LU$} & \includegraphics{A_LU.eps} &
+    \begin{tabular}{l}
+      $LU$ decomposition from\\
+      Gaussian elimination\\
+      (Lower triangular)(Upper triangular)
+    \end{tabular}\\
+
+    \Large{\boldmath $A=QR$} & \includegraphics{A_QR.eps} &
+    \begin{tabular}{l}
+      $QR$ decomposition as\\
+      Gram-Schmidt orthogonalization\\
+      Orthogonal $Q$ and triangular $R$
+    \end{tabular}\\
+     
+    \Large{\boldmath $S=Q\Lambda Q\transp$} & \includegraphics{A_QLQT.eps} &
+    \begin{tabular}{l}
+      Eigenvalue decomposition\\
+      of a symmetric matrix $S$\\
+      Eigenvectors in $Q$, eigenvalues in $\Lambda$
+    \end{tabular}\\
+  
+    \Large{\boldmath $A=U\Sigma V\transp$} & \includegraphics{A_USVT.eps} &
+    \begin{tabular}{l}
+      Singular value decomposition\\
+      of all matrices $A$\\
+      Singular values in $\Sigma$
+    \end{tabular}
+  \end{tabular}
+  \caption{The Five Factorization}
+
+\end{table}
 
 \subsection{$\boldsymbol{A=CR}$}
 
@@ -326,7 +367,8 @@ To rebuild $A$ by the independent columns 1, 2, you find a row echelon form $R$
 appearing in the right.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR1.eps}
+  \centering
+  \includegraphics[scale=0.8]{CR1.eps}
   \caption{Column Rank in $CR$}
 \end{figure}
 
@@ -334,7 +376,8 @@ Now you see the column rank is two because there are only two independent column
 and all the columns of $A$ are linear combinations of the two columns of $C$.
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{CR2.eps}
+  \centering
+  \includegraphics[scale=0.8]{CR2.eps}
   \caption{Row Rank in $CR$}
 \end{figure}
 
@@ -404,7 +447,8 @@ Here, we directly calculate $L$ and $U$ from $A$.
  
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU1.eps}
+  \centering
+  \includegraphics[scale=0.8]{LU1.eps}
 \caption{Recursive Rank 1 Matrix Peeling from $A$}
 \end{figure}
 
@@ -414,7 +458,8 @@ This leaves $A_2$. Do this recursively and decompose $A$ into the sum of rank 1 
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{LU2.eps}
+  \centering
+  \includegraphics[scale=0.8]{LU2.eps}
 \caption{$LU$ rebuilds $A$}
 \end{figure}
 
@@ -467,7 +512,8 @@ The original $A$ becomes $QR$: orthogonal times triangular.
 \end{gather*}
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{QR.eps}
+  \centering
+  \includegraphics[scale=0.8]{QR.eps}
   \caption{$A=QR$}
 \end{figure}
 
@@ -542,7 +588,8 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{EVD.eps}
+  \centering
+  \includegraphics[scale=0.8]{EVD.eps}
   \caption{$S=Q \Lambda Q\transp$}
 \end{figure}
 
@@ -575,7 +622,8 @@ The following illustrates the 'reduced' SVD.
 
 
 \begin{figure}[H]
-  \includegraphics[keepaspectratio, width=\linewidth]{SVD.eps}
+  \centering
+  \includegraphics[scale=0.8]{SVD.eps}
   \caption{$A=U \Sigma V\transp$}
 \end{figure}
 
@@ -658,12 +706,14 @@ traditional data science and machine learning. An important part of the matrix w
   \item Kenji Hiranabe(2021), \emph{Map of Eigenvalues}, An Agile Way(blog),\\
   \href{https://anagileway.com/2021/10/01/map-of-eigenvalues/}{https://anagileway.com/2021/10/01/map-of-eigenvalues/}\\
   \begin{figure}[H]
+    \centering
     \includegraphics[keepaspectratio, width=\linewidth]{MapofEigenvalues.eps}
     \caption{Map of Eigenvalues}
   \end{figure}
   \item Kenji Hiranabe(2020), \emph{Matrix World}, An Agile Way(blog),\\
   \href{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}
   \begin{figure}[H]
+    \centering
     \includegraphics[keepaspectratio, width=\linewidth]{MatrixWorld.eps}
     \caption{Matrix World}
   \end{figure}
