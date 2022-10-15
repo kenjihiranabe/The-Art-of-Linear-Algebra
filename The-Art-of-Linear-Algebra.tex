@@ -110,8 +110,7 @@ in colored circles.
   \item Sec. 1.1 (p.2) Linear combination and dot products
   \item Sec. 1.3 (p.25) Matrix of Rank One
   \item Sec. 1.4 (p.29) Row way and column way
-\end{itemize} 
-
+\end{itemize}
 
 \begin{figure}[H]
   \centering
@@ -346,7 +345,7 @@ and all the rows of $A$ are linear combinations of the two rows of $R$.
 
 \subsection{$\boldsymbol{A=LU}$}
 
-Solving $\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as a $LU$ factorization.
+Solving $A\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as an $LU$ factorization.
 Usually, you apply elementary row operation matrices ($E$) from left of $A$ to make upper trianglar $U$.
 
 \begin{align*}
@@ -355,7 +354,7 @@ Usually, you apply elementary row operation matrices ($E$) from left of $A$ to m
 \text{let} \; L = E^{-1}, \quad  A &= LU
 \end{align*}
 
-Now solve $A\bm{x}=\bm{b}$ in 2 steps: 1) forward $L\bm{c}=\bm{b}$ and 2) back $U\bm{x}=\bm{c}$.
+Now solve $A\bm{x}=\bm{b}$ in 2 steps: (1) forward $L\bm{c}=\bm{b}$ and (2) back $U\bm{x}=\bm{c}$.
 
 
 \begin{itemize}
@@ -564,14 +563,15 @@ Note that Pattern 4 (P4) is working for the decomposition.
 
 \subsection{$\boldsymbol{A=U \Sigma V\transp}$}
 
-All matrices including rectangular ones have a singular value decomposition (SVD).
-
-$A=U \Sigma V\transp$ has the singular vectors of $A$ in $U$ and $V$.
-And its singular values in $\Lambda$.
 
 \begin{itemize}
   \item Sec.7.1 (p.259) Singular Values and Singular Vecrtors
 \end{itemize}
+
+All matrices including rectangular ones have a singular value decomposition (SVD).
+$A=U \Sigma V\transp$ has the singular vectors of $A$ in $U$ and $V$.
+And its singular values line up in $\Lambda$'s diagonal elements.
+The following illustrates the 'reduced' SVD.
 
 
 \begin{figure}[H]
