@@ -1,0 +1,26 @@
+2 ViewingMatrix-4Ways
+3 VectorTimesVector
+6 MatrixTimesVector
+9 VectorTimesMatrix
+12 4-Subspaces
+13 MatrixTimesMatrix
+18 Pattern12
+23 Pattern11-22
+26 Pattern3
+28 Pattern4
+30 5-Factorizations
+31 A_CR
+32 A_LU
+33 A_QR
+34 A_QLQT
+35 A_USVT
+36 CR1
+37 CR2
+38 LU1
+39 LU2
+40 QR
+41 EVD
+42 SVD
+43 MatrixWorld
+44 MapofEigenvalues
+	

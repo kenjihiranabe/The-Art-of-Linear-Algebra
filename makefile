@@ -11,140 +11,65 @@ PS2EPS=ps2eps -B -l -f
 # two product target files
 all: $(ART).pdf $(ART)-j.pdf
 
-PS=ViewingMatrix-4Ways.ps\
-	VectorTimesVector.ps\
-	MatrixTimesVector.ps\
-	VectorTimesMatrix.ps\
-	4-Subspaces.ps\
-	MatrixTimesMatrix.ps\
-	5-Factorizations.ps\
-	CR1.ps\
-	CR2.ps\
-	LU1.ps\
-	LU2.ps\
-	Pattern11-22.ps\
-	Pattern12.ps\
-	Pattern3.ps\
-	Pattern4.ps\
-	QR.ps\
-	EVD.ps\
-	SVD.ps\
-	$(MAP).ps\
-	$(WORLD).ps
+EPS=figs/ViewingMatrix-4Ways.eps\
+	figs/VectorTimesVector.eps\
+	figs/MatrixTimesVector.eps\
+	figs/VectorTimesMatrix.eps\
+	figs/4-Subspaces.eps\
+	figs/MatrixTimesMatrix.eps\
+	figs/5-Factorizations.eps\
+	figs/A_CR.eps\
+	figs/A_LU.eps\
+	figs/A_QLQT.eps\
+	figs/A_QR.eps\
+	figs/A_USVT.eps\
+	figs/CR1.eps\
+	figs/CR2.eps\
+	figs/LU1.eps\
+	figs/LU2.eps\
+	figs/Pattern11-22.eps\
+	figs/Pattern12.eps\
+	figs/Pattern3.eps\
+	figs/Pattern4.eps\
+	figs/QR.eps\
+	figs/EVD.eps\
+	figs/SVD.eps\
+	figs/$(MAP).eps\
+	figs/$(WORLD).eps
 
-
-PSJ=$(PS:%.ps=%-j.ps)
-
-%.ps: %.pptx
+$(ILLUST).ps: $(ILLUST).pptx
 	@echo "*** .pptx is new !! Print out $< to PostScript(.ps see PowerPointSetting.png for setting), then make again ***"
 	open PowerPointSetting.png
+	exit 1
 
-# split illlustration.ps file into pages and name them
-ViewingMatrix-4Ways.ps: $(ILLUST).ps
-	$(PSSELECT) 2 $< $@
-ViewingMatrix-4Ways-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 2 $< $@
-#
-VectorTimesVector.ps: $(ILLUST).ps
-	$(PSSELECT) 3 $< $@
-VectorTimesVector-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 3 $< $@
-#
-MatrixTimesVector.ps: $(ILLUST).ps
-	$(PSSELECT) 4 $< $@
-#
-MatrixTimesVector-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 4 $< $@
-#
-VectorTimesMatrix.ps: $(ILLUST).ps
-	$(PSSELECT) 5 $< $@
-VectorTimesMatrix-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 5 $< $@
-#
-4-Subspaces.ps: $(ILLUST).ps
-	$(PSSELECT) 6 $< $@
-4-Subspaces-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 6 $< $@
-#
-MatrixTimesMatrix.ps: $(ILLUST).ps
-	$(PSSELECT) 7 $< $@
-MatrixTimesMatrix-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 7 $< $@
-#
-Pattern12.ps: $(ILLUST).ps
-	$(PSSELECT) 8 $< $@
-Pattern12-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 8 $< $@
-#
-Pattern11-22.ps: $(ILLUST).ps
-	$(PSSELECT) 9 $< $@
-Pattern11-22-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 9 $< $@
-#
-Pattern3.ps: $(ILLUST).ps
-	$(PSSELECT) 10 $< $@
-Pattern3-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 10 $< $@
-#
-Pattern4.ps: $(ILLUST).ps
-	$(PSSELECT) 11 $< $@
-Pattern4-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 11 $< $@
-#
-5-Factorizations.ps: $(ILLUST).ps
-	$(PSSELECT) 12 $< $@
-5-Factorizations-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 12 $< $@
-#
-CR1.ps: $(ILLUST).ps
-	$(PSSELECT) 13 $< $@
-CR1-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 13 $< $@
-#
-CR2.ps: $(ILLUST).ps
-	$(PSSELECT) 14 $< $@
-CR2-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 14 $< $@
-#
-LU1.ps: $(ILLUST).ps
-	$(PSSELECT) 15 $< $@
-LU1-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 15 $< $@
-#
-LU2.ps: $(ILLUST).ps
-	$(PSSELECT) 16 $< $@
-LU2-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 16 $< $@
-#
-QR.ps: $(ILLUST).ps
-	$(PSSELECT) 17 $< $@
-QR-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 17 $< $@
-#
-EVD.ps: $(ILLUST).ps
-	$(PSSELECT) 18 $< $@
-EVD-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 18 $< $@
-#
-SVD.ps: $(ILLUST).ps
-	$(PSSELECT) 19 $< $@
-SVD-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 19 $< $@
-#
-$(WORLD).ps: $(ILLUST).ps
-	$(PSSELECT) 20 $< $@
-$(WORLD)-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 20 $< $@
-#
-$(MAP).ps: $(ILLUST).ps
-	$(PSSELECT) 21 $< $@
-$(MAP)-j.ps: $(ILLUST)-j.ps
-	$(PSSELECT) 21 $< $@
+$(ILLUST)-j.ps: $(ILLUST)-j.pptx
+	@echo "*** .pptx is new !! Print out $< to PostScript(.ps see PowerPointSetting.png for setting), then make again ***"
+	open PowerPointSetting.png
+	exit 1
 
-
-EPS=$(PS:.ps=.eps)
 EPSJ=$(PSJ:-j.ps=-j.eps)
+JAPP_EPS=$(JAPP_PS:.ps=.eps)
 
+eps: $(ILLUST).ps
+	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
+		$(PSSELECT) $$i $< figs/illust-p$$i.ps; \
+		$(PS2EPS) figs/illust-p$$i.ps; \
+		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's/_/=/' -e's|^.*|figs/&.eps|' | xargs cp figs/illust-p$$i.eps ; \
+	done
+
+epsj: $(ILLUST)-j.ps
+	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
+		$(PSSELECT) $$i $< figs/illust-p$$i-j.ps; \
+		$(PS2EPS) figs/illust-p$$i-j.ps; \
+		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's/_/=/' -e 's|^.*|figs/&-j.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
+	done
+
+japp_eps: $(ILLUST)-j.ps
+	for i in `sed '/^#/d' name-list-book.mak | cut -d ' ' -f 1`; do \
+		grep "^$$i " name-list-book.mak | cut -d ' ' -f 2 | sed -e 's/_/=/' -e 's|^.*|figs/japp_&.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
+	done
+
+	
 %.pdf: out/%.dvi
 	dvipdfmx -p a4 -q $<
 
@@ -156,17 +81,12 @@ out/$(ART)-j.dvi: $(ART)-j.tex $(EPSJ)
 
 # uplatex -synctex=1 -halt-on-error -silent -file-line-error -output-directory=out $<
 # see https://qiita.com/rainbartown/items/d7718f12d71e688f3573#comment-7c2f42254e84b43d3175
+# 
 
-eps: $(EPS)
-epsj: $(EPSJ)
+japp_copy:
+	cp japp*.eps ../linear-algebra-for-everyone/translation/jfigs
+	cp japp*.eps ../linear-algebra-for-everyone/translation/figs
 
-%.eps: %.ps
-	$(PS2EPS) $<
 
 clean:
-	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/*
-
-# just for testing and debugging
-echo:
-	@echo "eps = $(EPS)"
-	@echo "epsj = $(EPSJ)"
+	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/* *.p
