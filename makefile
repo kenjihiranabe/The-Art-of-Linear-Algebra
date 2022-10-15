@@ -54,14 +54,14 @@ eps: $(ILLUST).ps
 	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
 		$(PSSELECT) $$i $< figs/illust-p$$i.ps; \
 		$(PS2EPS) figs/illust-p$$i.ps; \
-		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's/_/=/' -e's|^.*|figs/&.eps|' | xargs cp figs/illust-p$$i.eps ; \
+		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e's|^.*|figs/&.eps|' | xargs cp figs/illust-p$$i.eps ; \
 	done
 
 epsj: $(ILLUST)-j.ps
 	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
 		$(PSSELECT) $$i $< figs/illust-p$$i-j.ps; \
 		$(PS2EPS) figs/illust-p$$i-j.ps; \
-		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's/_/=/' -e 's|^.*|figs/&-j.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
+		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's|^.*|figs/&-j.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
 	done
 
 japp_eps: $(ILLUST)-j.ps
