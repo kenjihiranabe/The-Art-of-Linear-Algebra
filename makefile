@@ -15,41 +15,6 @@ PS2EPS=ps2eps -B -l -f
 # the two product target files. "-j" means Japaense version.
 all: $(ART).pdf $(ART)-j.pdf
 
-# needed eps files included in the *.tex file (this macro only needed for dependency at the bottom .dvi)
-EPS=figs/ViewingMatrix-4Ways.eps\
-	figs/VectorTimesVector.eps\
-	figs/MatrixTimesVector.eps\
-	figs/VectorTimesMatrix.eps\
-	figs/4-Subspaces.eps\
-	figs/MatrixTimesMatrix.eps\
-	figs/5-Factorizations.eps\
-	figs/A_CR.eps\
-	figs/A_LU.eps\
-	figs/A_QLQT.eps\
-	figs/A_QR.eps\
-	figs/A_USVT.eps\
-	figs/CR1.eps\
-	figs/CR2.eps\
-	figs/LU1.eps\
-	figs/LU2.eps\
-	figs/Pattern11-22.eps\
-	figs/Pattern12.eps\
-	figs/Pattern3.eps\
-	figs/Pattern4.eps\
-	figs/QR.eps\
-	figs/EVD.eps\
-	figs/SVD.eps\
-	figs/$(MAP).eps\
-	figs/$(WORLD).eps
-
-EPSJ=$(EPS:%.eps=%-j.eps)
-
-$(EPS): $(ILLUST).ps
-	@echo "Run '>make esp', and make"
-
-$(EPSJ): $(ILLUST)-j.ps
-	@echo "Run '>make espj', and make"
-
 # printout of all the pages of PowerPoint to PostScript
 $(ILLUST).ps: $(ILLUST).pptx
 	@echo "*** .pptx is new !! Print out $< to PostScript(.ps see PowerPointSetting.png for setting), then make again ***"
@@ -64,28 +29,30 @@ $(ILLUST)-j.ps: $(ILLUST)-j.pptx
 # the target should be $(EPS) but, avoided muti-loop of execution.
 # so this target has to be kicked by hand after changing PowerPoint illustrations.
 # the "page number to figure name" table is in the name-list.mak
-eps: $(ILLUST).ps
+eps-updated.touch: $(ILLUST).ps
 	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
 		$(PSSELECT) $$i $< figs/illust-p$$i.ps; \
 		$(PS2EPS) figs/illust-p$$i.ps; \
 		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e's|^.*|figs/&.eps|' | xargs cp figs/illust-p$$i.eps ; \
 	done
+	touch $@
 
-epsj: $(ILLUST)-j.ps
+epsj-updated.touch: $(ILLUST)-j.ps
 	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
 		$(PSSELECT) $$i $< figs/illust-p$$i-j.ps; \
 		$(PS2EPS) figs/illust-p$$i-j.ps; \
 		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's|^.*|figs/&-j.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
 	done
+	touch $@
 
 # THE tex compilation part.
 %.pdf: out/%.dvi
 	dvipdfmx -p a4 -q $<
 
-out/$(ART).dvi: $(ART).tex $(EPS)
+out/$(ART).dvi: $(ART).tex eps-updated.touch
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART).tex
 
-out/$(ART)-j.dvi: $(ART)-j.tex $(EPSJ)
+out/$(ART)-j.dvi: $(ART)-j.tex epsj-updated.touch
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART)-j.tex
 
 # note: for the options
@@ -106,3 +73,36 @@ japp_copy:
 
 clean:
 	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/* *.p figs/*
+
+# may need this later ... (only commented lines below)
+# now, all the eps filenames are moved to names-list.mak
+# and updated timestamp is in .touch files.
+# EPS=figs/ViewingMatrix-4Ways.eps\
+# 	figs/VectorTimesVector.eps\
+# 	figs/MatrixTimesVector.eps\
+# 	figs/VectorTimesMatrix.eps\
+# 	figs/4-Subspaces.eps\
+# 	figs/MatrixTimesMatrix.eps\
+# 	figs/5-Factorizations.eps\
+# 	figs/A_CR.eps\
+# 	figs/A_LU.eps\
+# 	figs/A_QLQT.eps\
+# 	figs/A_QR.eps\
+# 	figs/A_USVT.eps\
+# 	figs/CR1.eps\
+# 	figs/CR2.eps\
+# 	figs/LU1.eps\
+# 	figs/LU2.eps\
+# 	figs/Pattern11-22.eps\
+# 	figs/Pattern12.eps\
+# 	figs/Pattern3.eps\
+# 	figs/Pattern4.eps\
+# 	figs/QR.eps\
+# 	figs/EVD.eps\
+# 	figs/SVD.eps\
+# 	figs/$(MAP).eps\
+# 	figs/$(WORLD).eps
+# EPSJ=$(EPS:%.eps=%-j.eps)
+# $(EPS): eps-updated.touch
+# $(EPSJ):  epsj-updated.touch
+
