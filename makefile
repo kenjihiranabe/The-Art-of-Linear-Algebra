@@ -35,7 +35,7 @@ eps-updated.touch: $(ILLUST).ps
 		$(PS2EPS) figs/illust-p$$i.ps; \
 		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e's|^.*|figs/&.eps|' | xargs cp figs/illust-p$$i.eps ; \
 	done
-	touch $@
+	ls -lR > $@
 
 epsj-updated.touch: $(ILLUST)-j.ps
 	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
@@ -43,7 +43,7 @@ epsj-updated.touch: $(ILLUST)-j.ps
 		$(PS2EPS) figs/illust-p$$i-j.ps; \
 		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's|^.*|figs/&-j.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
 	done
-	touch $@
+	ls -lR > $@
 
 # THE tex compilation part.
 %.pdf: out/%.dvi
@@ -72,7 +72,7 @@ japp_copy:
 	cp japp*.eps ../linear-algebra-for-everyone/translation/figs
 
 clean:
-	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/* *.p figs/*
+	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/* *.p figs/*.ps
 
 # may need this later ... (only commented lines below)
 # now, all the eps filenames are moved to names-list.mak
