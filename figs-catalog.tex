@@ -1,0 +1,38 @@
+\documentclass[letterpaper]{article}
+\usepackage{typearea}
+\typearea{12}
+\usepackage{here}
+\usepackage{bm}
+\usepackage{amsmath, amsfonts}
+\usepackage[top=20truemm,bottom=20truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[dvipdfmx]{hyperref,graphicx}
+
+% incorporated from Linear Algebra for Everyone 7/18/2022
+\newcommand{\bi}[1]{\hbox{\boldmath$#1$}}
+\DeclareRobustCommand\transp{^{\mathrm{T}}}
+\DeclareMathAlphabet{\cmrv}{OML}{cmm}{b}{it}
+\newcommand{\bu}{\hbox{\boldmath$u$}}
+\newcommand{\bv}{\hbox{$\cmrv{v}$}}
+\newcommand{\bw}{\hbox{\boldmath$w$}}
+\newcommand\mat{{\sf MATLAB}}
+%
+
+% prepare to move figures
+\graphicspath{ {figs/} }
+
+\begin{document}
+\title{Figures}
+\vspace{5pt}
+
+\date{September 1, 2021/updated \today}
+
+\maketitle
+
+\vspace{-5pt}
+ 
+
+\section*{figs}
+
+\input{figs/epsinclude.tex}
+
+\end{document}

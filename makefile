@@ -55,6 +55,12 @@ out/$(ART).dvi: $(ART).tex eps-updated.touch
 out/$(ART)-j.dvi: $(ART)-j.tex epsj-updated.touch
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART)-j.tex
 
+out/figs-catalog.dvi: figs-catalog.tex figs/epsinclude.tex
+	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $<
+
+.PHONY: figs/epsinclude.tex
+figs/epsinclude.tex:
+	cd figs; ls illust*.eps | grep -v 'japp' | grep -v -- '-j.eps' | sed -e 's/.*/\\includegraphics{&}\\\\&\\\\\n\n/' | sed 's/_/\\_/g' > epsinclude.tex
 # note: for the options
 # uplatex -synctex=1 -halt-on-error -silent -file-line-error -output-directory=out $<
 # see https://qiita.com/rainbartown/items/d7718f12d71e688f3573#comment-7c2f42254e84b43d3175
