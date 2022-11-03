@@ -22,7 +22,7 @@
 \graphicspath{ {figs/} }
 
 \begin{document}
-\title{线性代数的艺术\\
+\title{The Art of Linear Algebra\\
 \vspace{5pt}
 \large{
 -- Graphic Notes on ``Linear Algebra for Everyone" --
@@ -32,7 +32,9 @@
 \author{Kenji Hiranabe
 \thanks{twitter: @hiranabe, k-hiranabe@esm.co.jp, \url{https://anagileway.com}} \\
 with the kindest help of Gilbert Strang
-\thanks{Massachusetts Institute of Technology, \url{http://www-math.mit.edu/\~gs/}}
+\thanks{Massachusetts Institute of Technology, \url{http://www-math.mit.edu/\~gs/}} \\
+translator: Kefang Liu
+\thanks{中文版翻译: \url{https://github.com/kf-liu/The-Art-of-Linear-Algebra-zh-CN}}
 }
 
 \date{September 1, 2021/updated \today}
@@ -42,37 +44,36 @@ with the kindest help of Gilbert Strang
 \vspace{-5pt}
  
 \begin{abstract}
-I tried intuitive visualizations of important concepts introduced
-in ``Linear Algebra for Everyone".\footnote{``Linear Algebra for Everyone":
-\url{http://math.mit.edu/everyone/} with Japanese translation started by Kindai Kagaku.}\linebreak
-This is aimed at promoting understanding of vector/matrix calculations
-and algorithms from the\linebreak perspectives of matrix factorizations.
-They include Column-Row ($\bm{CR}$), Gaussian Elimination ($\bm{LU}$),
-Gram-Schmidt Orthogonalization ($\bm{QR}$), Eigenvalues and Diagonalization ($\bm{Q \Lambda Q\transp}$),
-and Singular Value Decomposition ($\bm{U \Sigma V\transp}$).
+我尝试为 Gilbert Strang 在书籍 “Linear Algebra for Everyone” 中介绍的矩阵的重要概念进行可视化图释, 
+以促进从矩阵分解的角度对向量、矩阵计算和算法的理解.
+\footnote{``Linear Algebra for Everyone": 
+\url{http://math.mit.edu/everyone/}.}
+它们包括列-行 (Column-Row, $\bm{CR}$)、
+高斯消除 (Gaussian Elimination, $\bm{LU}$)、
+施密特正交化 (Gram-Schmidt Orthogonalization, $\bm{QR}$)、
+特征值和对角化 (Eigenvalues and Diagonalization, $\bm{Q \Lambda Q\transp}$)、
+和奇异值分解 (Singular Value Decomposition, $\bm{U \Sigma V\transp}$).
 \end{abstract}
 
-\section*{Foreword}
-I am happy to see Kenji Hiranabe's pictures of matrix operations in linear algebra !
-The pictures are an excellent way to show the algebra.  We can think of matrix
-multiplications by row $\bm{\cdot}$ column dot products, but that is not all --  it is ``linear combinations"
-and ``rank 1 matrices" that complete the algebra and the art.
-I am very grateful to see the books in Japanese translation
-and the ideas in Kenji's pictures.
+\section*{序言}
+我很高兴能看到 Kenji Hiranabe 的线性代数中的矩阵运算的图片! 
+这样的图片是展示代数的绝佳方式. 我们当然可以通过 行 $\bm{\cdot}$ 列 的点乘来想象矩阵乘法, 
+但那绝非全部 —— 它是``线性组合"与``秩1矩阵"组成的代数与艺术. 
+我很感激能看到日文翻译的书籍和 Kenji 的图片中的想法. 
 \begin{flushright}
--- Gilbert Strang \\ Professor of Mathematics at MIT
+-- Gilbert Strang \\ 麻省理工学院数学教授
 \end{flushright}
 
 \tableofcontents
 
-\section{Viewing a Matrix -- 4 Ways}
+\section{理解矩阵——4个视角}
 
-A matrix ($m \times n$) can be seen as $1$ matrix, $mn$ numbers, $n$ columns and $m$ rows.
+一个矩阵 ($m \times n$) 可以被视为$1$个矩阵, $mn$个数, $n$个列和$m$个行.
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{ViewingMatrix-4Ways.eps}\\
-    \caption{Viewing a Matrix in 4 Ways}
+    \caption{从四个角度理解矩阵}
 \end{figure}
 
 
@@ -96,137 +97,136 @@ A matrix ($m \times n$) can be seen as $1$ matrix, $mn$ numbers, $n$ columns and
   \end{bmatrix}
 \end{equation*} \\
 
-Here, the column vectors are in bold as $\bm{a_1}$.
-Row vectors include $\bm{*}$ as in $\bm{a_1^*}$.
-Transposed vectors and matrices are indicated by $\mathrm{T}$ as
-in $\bm{a}\transp$ and $A\transp$.
+在这里, 列向量被标记为粗体$\bm{a_1}$.
+行向量则有一个$\bm{*}$号, 标记为$\bm{a_1^*}$.
+转置向量和矩阵则用$\mathrm{T}$标记为
+$\bm{a}\transp$和$A\transp$.
 
-\section{Vector times Vector -- 2 Ways}
+\section{向量乘以向量——2个视角}
 
-Hereafter I point to specific sections of ``Linear Algebra for Everyone" 
-and present graphics which illustrate the concepts with short names
-in colored circles.
+后文中, 我将介绍一些概念, 同时列出“Linear Algebra for Everyone”一书中的相应部分 (部分编号插入如下). 
+详细的内容最好看书, 这里我也添加了一个简短的解释, 以便您可以通过这篇文章尽可能多地理解. 
+此外, 每个图都有一个简短的名称, 例如 v1 (数字 1 表示向量的乘积)、Mv1 (数字 1 表示矩阵和向量的乘积), 以及如下图 (v1) 所示的彩色圆圈. 
+如你所见, 随着讨论的进行, 该名称将被交叉引用. 
 
 \begin{itemize}
-  \item Sec. 1.1 (p.2) Linear combination and dot products
-  \item Sec. 1.3 (p.25) Matrix of Rank One
-  \item Sec. 1.4 (p.29) Row way and column way
+  \item 1.1节 (p.2) 线性组合与点积
+  \item 1.3节 (p.25) 矩阵与秩1
+  \item 1.4节 (p.29) 行方式与列方式
 \end{itemize}
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{VectorTimesVector.eps}
-  \caption{Vector times Vector - (v1), (v2)}
+  \caption{向量乘以向量 - (v1), (v2)}
 \end{figure}
 
-(v1) is a elementary operation of two vectors, but (v2) multiplies the column to the row
-and produce a rank 1 matrix. Knowing this outer product (v2) is the key for the later sections.
+(v1) 是两个向量之间的基础运算, 而 (v2) 将列乘以行并产生一个秩1矩阵. 
+理解 (v2) 的结果 (秩1) 是接下来章节的关键.
 
-\section{Matrix times Vector -- 2 Ways}
+\section{矩阵乘以向量——2个视角}
 
-A matrix times a vector creates a vector of three dot products (Mv1)
-as well as a linear combination (Mv2) of the column vectors of $A$.
+一个矩阵乘以一个向量将产生三个点积组成的向量 (Mv1) 和
+一种$A$的列向量的线性组合.
 
 \begin{itemize}
-  \item Sec. 1.1 (p.3) Linear combinations
-  \item Sec. 1.3 (p.21) Matrices and Column Spaces
+  \item 1.1节 (p.3) 线性组合
+  \item 1.3节 (p.21) 矩阵与列空间
 \end{itemize} 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{MatrixTimesVector.eps}
-  \caption{Matrix times Vector - (Mv1), (Mv2)}
+  \caption{矩阵乘以向量- (Mv1), (Mv2)}
 \end{figure}
 
-At first, you learn (Mv1). But when you get used to viewing it as (Mv2),
-you can understand $A\bm{x}$ as a linear combination of the columns of $A$.
-Those products fill the column space of $A$  denoted as $\mathbf{C}(A)$.
-The solution space of $A\bm{x}=\bm{0}$ is the nullspace of $A$ denoted as $\mathbf{N}(A)$.
+往往你会先学习 (Mv1). 但当你习惯了从 (Mv2) 的视角看待它, 会理解$A\bm{x}$是$A$的列的线性组合. 
+矩阵$A$的列向量的所有线性组合生成的子空间记为$\mathbf{C}(A)$. 
+$A\bm{x}=\bm{0}$的解空间则是零空间, 记为$\mathbf{N}(A)$. 
 
-Also, (vM1) and (vM2) shows the same patterns for a row vector times a matrix.
+
+同理, 由 (vM1) 和 (vM2) 可见, 行向量乘以矩阵也是同一种理解方式. 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{VectorTimesMatrix.eps}
-  \caption{Vector times Matrix - (vM1), (vM2)}
+  \caption{向量乘以矩阵 - (vM1), (vM2)}
 \end{figure}
 
+上图$A$的行向量的所有线性组合生成的子空间记为$\mathbf{C}(A\transp)$. 
+$yA=0$的解空间是$A$的左零空间, 记为 $\mathbf{N}(A\transp)$. 
 
-The products fill the row space of $A$ denoted as $\mathbf{C}(A\transp)$.
-The solution space of $yA=0$ is the left-nullspace of $A$ denoted as $\mathbf{N}(A\transp)$.
 
-
-The four subspaces consists of $\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ 
-(which are perpendicular to each other) in $\mathbb{R}^n$ and
-$\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ in $\mathbb{R}^m$
-(which are perpendicular to each other).
+本书的一大亮点即为四个基本子空间: 在$\mathbb{R}^n$ 上的
+$\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ (相互正交) 
+和在$\mathbb{R}^m$ 上的$\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ (相互正交). 
 
 
 \begin{itemize}
-  \item Sec. 3.5 (p.124) Dimensions of the Four Subspaces
+  \item 3.5节 (p.124) 四个子空间的维度
 \end{itemize} 
 
 \begin{figure}[H]
   \centering
   \includegraphics[keepaspectratio, width=8cm]{4-Subspaces.eps}
-  \caption{The Four Subspaces}
+  \caption{四个子空间}
 \end{figure}
 
-See $A=CR$ (Sec 6.1) for the rank $r$.
+关于秩$r$, 请见$A=CR$ (6.1节) .
 
 
-\section{Matrix times Matrix -- 4 Ways}
+\section{矩阵乘以矩阵——4个视角}
 
-``Matrix times Vector" naturally extends to ``Matrix times Matrix".
+由``矩阵乘以向量"自然延伸到``矩阵乘以矩阵".
 
 \begin{itemize}
-  \item Sec. 1.4 (p.35) Four Ways to Multiply $\bm{AB=C}$
-  \item Also see the back cover of the book
+  \item 1.4节 (p.35) $\bm{AB=C}$的四种乘法
+  \item 也可以见书的封底
 \end{itemize} 
 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{MatrixTimesMatrix.eps}
-  \caption{Matrix times Matrix - (MM1), (MM2), (MM3), (MM4)}
+  \caption{矩阵乘以矩阵 - (MM1), (MM2), (MM3), (MM4)}
 \end{figure}
 
-\section{Practical Patterns}
+\section{实用模式}
 
-Here, I show some practical patterns which allow you to capture
-the coming factorizations more intuitively.
+在这里, 我展示了一些实用的模式, 可以让你更直观地理解接下来的内容。
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{Pattern12.eps}
-  \caption{Pattern 1, 2 - (P1), (P1)}
+  \caption{图 1, 2 - (P1), (P1)}
 \end{figure}
 
-Pattern 1 is a combination of (MM2) and (Mv2).
-Pattern 2 is an extention of (MM3). Note that Pattern 1 is a column operation (multiplying a matrix from right),
-whereas Pattern 2 is a row operation (multiplying a matrix from left).
+P1 是 (MM2) 和 (Mv2) 的结合. 
+P2 是 (MM3) 和 (vM2) 的扩展. 
+注意, P1 是列运算 (右乘一个矩阵), 
+而 P2 是行运算 (左乘一个矩阵). 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{Pattern11-22.eps}
-  \caption{Pattern 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
+  \caption{图 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
 \end{figure}
 
-(P1$^\prime$) multipies the diagonal numbers to the columns of the matrix,
-whereas (P2$^\prime$) multipies the diagonal numbers to the row of the matrx.
-Both are variants of (P1) and (P2).
+(P1$^\prime$) 将对角线上的数乘以矩阵的列, 
+而 (P2$^\prime$) 将对角线上的数乘以矩阵的行. 
+两个分别为 (P1) 和 (P2) 的变体. 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.85]{Pattern3.eps}
-  \caption{Pattern 3 - (P3)}
+  \caption{图 3 - (P3)}
 \end{figure}
 
-This pattern appears when you solve differential equations and recurrence equations:
+当解决微分方程和递归方程时的也会出现这一模式: 
 
 \begin{itemize}
-  \item Sec. 6 (p.201) Eigenvalues and Eigenvectors
-  \item Sec. 6.4 (p.243) Systems of Differential Equations
+  \item 6节 (p.201) 特征值和特征向量
+  \item 6.4节 (p.243) 微分方程组
 \end{itemize} 
 
 \begin{align*}

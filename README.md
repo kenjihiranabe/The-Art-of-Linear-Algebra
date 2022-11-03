@@ -1,36 +1,38 @@
-# 线性代数的艺术
+English ｜ [中文(简体)](README-zh-CN.md)
 
-图解吉尔伯特·斯特朗的“给每个人的线性代数”
+# The-Art-of-Linear-Algebra
 
-中文版本 "[The-Art-of-Linear-Algebra-zh-CN.pdf](The-Art-of-Linear-Algebra-zh-CN.pdf)"
+Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 
-英文版本 "[The-Art-of-Linear-Algebra.pdf](The-Art-of-Linear-Algebra.pdf)"
+The output file is "[The-Art-of-Linear-Algebra.pdf](The-Art-of-Linear-Algebra.pdf)"
 
-日文版本 "[The-Art-of-Linear-Algebra-j.pdf](The-Art-of-Linear-Algebra-j.pdf)"
+Japanese version "[The-Art-of-Linear-Algebra-j.pdf](The-Art-of-Linear-Algebra-j.pdf)"
 
-## 摘要
+Chinese version "[The-Art-of-Linear-Algebra-zh-CN.pdf](The-Art-of-Linear-Algebra-zh-CN.pdf)" and "[kf-liu/The-Art-of-Linear-Algebra-zh-CN/The-Art-of-Linear-Algebra-zh-CN.pdf](https://github.com/kf-liu/The-Art-of-Linear-Algebra-zh-CN/blob/main/The-Art-of-Linear-Algebra-zh-CN.pdf)" for the latest Chinese version. 
 
-我尝试引入“给每个人的线性代数”中重要概念的直观的可视化,以促进从矩阵分解的角度对向量、矩阵计算和算法的理解。
-它们包括列-行 (Column-Row, CR)、高斯消除 (Gaussian Elimination, LU)、施密特正交化 (Gram-Schmidt Orthogonalization, QR)、特征值和对角化 (Eigenvalues and Diagonalization, QΛQ')、和奇异值分解（Singular Value Decomposition, UΣV'）。
+## Abstract
 
-![5种分解](5-Factorizations.png)
+I tried intuitive visualizations of important concepts introduced
+in "Linear Algebra for Everyone".
 
-也包括其他图形.
+This is aimed at promoting understanding of vector/matrix calculations
+and algorithms from the perspectives of matrix factorizations.
+They include Column-Row (CR), Gaussian Elimination (LU),
+Gram-Schmidt Orthogonalization (QR), Eigenvalues and Diagonalization (QΛQ'),
+and Singular Value Decomposition (UΣV').
 
-## 特征值图
+![5 Factorizations](5-Factorizations.png)
 
-![特征值图](MapofEigenvalues.png)
+Also includes other graphics.
 
-- 可以在 PDF "[MapofEigenvalues](MapofEigenvalues-v1.1.pdf)"中查看
+## Map of Eigenvalues
 
-## 矩阵世界
+![Map of Eigenvalues](MapofEigenvalues.png)
 
-![矩阵世界](MatrixWorld.png)
+- Avaialble in PDF "[MapofEigenvalues](MapofEigenvalues-v1.1.pdf)"
 
-- 可以在 PDF "[MatrixWorld](MatrixWorld.pdf)"中查看
+## Matrix World
 
-## 协议
+![Matrix World](MatrixWorld.png)
 
-英文与日文版本协议见[原文](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra), 译者行文时, 原文版本使用 CC0-1.0 协议.
-
-中文版本使用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>协议, 请勿商用.
+- Avaialble in PDF "[MatrixWorld](MatrixWorld.pdf)"
