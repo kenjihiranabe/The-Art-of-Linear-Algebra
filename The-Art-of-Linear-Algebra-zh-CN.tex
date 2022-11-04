@@ -1,0 +1,710 @@
+\documentclass[letterpaper]{article}
+\usepackage{typearea}
+\typearea{12}
+\usepackage{here}
+\usepackage{bm}
+\usepackage{amsmath, amsfonts}
+\usepackage[top=20truemm,bottom=20truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[dvipdfmx]{hyperref,graphicx}
+\usepackage{xeCJK}
+
+% incorporated from Linear Algebra for Everyone 7/18/2022
+\newcommand{\bi}[1]{\hbox{\boldmath$#1$}}
+\DeclareRobustCommand\transp{^{\mathrm{T}}}
+\DeclareMathAlphabet{\cmrv}{OML}{cmm}{b}{it}
+\newcommand{\bu}{\hbox{\boldmath$u$}}
+\newcommand{\bv}{\hbox{$\cmrv{v}$}}
+\newcommand{\bw}{\hbox{\boldmath$w$}}
+\newcommand\mat{{\sf MATLAB}}
+%
+
+% prepare to move figures
+\graphicspath{ {figs/} }
+
+\begin{document}
+\title{The Art of Linear Algebra\\
+\vspace{5pt}
+\large{
+-- Graphic Notes on ``Linear Algebra for Everyone" --
+}
+}
+
+\author{Kenji Hiranabe
+\thanks{twitter: @hiranabe, k-hiranabe@esm.co.jp, \url{https://anagileway.com}} \\
+with the kindest help of Gilbert Strang
+\thanks{Massachusetts Institute of Technology, \url{http://www-math.mit.edu/\~gs/}} \\
+translator: Kefang Liu
+\thanks{中文版翻译: \url{https://github.com/kf-liu/The-Art-of-Linear-Algebra-zh-CN}}
+}
+
+\date{September 1, 2021/updated \today}
+
+\maketitle
+
+\vspace{-5pt}
+ 
+\begin{abstract}
+我尝试为 Gilbert Strang 在书籍 “Linear Algebra for Everyone” 中介绍的矩阵的重要概念进行可视化图释, 
+以促进从矩阵分解的角度对向量、矩阵计算和算法的理解.
+\footnote{``Linear Algebra for Everyone": 
+\url{http://math.mit.edu/everyone/}.}
+它们包括列-行 (Column-Row, $\bm{CR}$)、
+高斯消除 (Gaussian Elimination, $\bm{LU}$)、
+施密特正交化 (Gram-Schmidt Orthogonalization, $\bm{QR}$)、
+特征值和对角化 (Eigenvalues and Diagonalization, $\bm{Q \Lambda Q\transp}$)、
+和奇异值分解 (Singular Value Decomposition, $\bm{U \Sigma V\transp}$).
+\end{abstract}
+
+\section*{序言}
+我很高兴能看到 Kenji Hiranabe 的线性代数中的矩阵运算的图片! 
+这样的图片是展示代数的绝佳方式. 我们当然可以通过 行 $\bm{\cdot}$ 列 的点乘来想象矩阵乘法, 
+但那绝非全部 —— 它是``线性组合"与``秩1矩阵"组成的代数与艺术. 
+我很感激能看到日文翻译的书籍和 Kenji 的图片中的想法. 
+\begin{flushright}
+-- Gilbert Strang \\ 麻省理工学院数学教授
+\end{flushright}
+
+\tableofcontents
+
+\section{理解矩阵——4个视角}
+
+一个矩阵 ($m \times n$) 可以被视为$1$个矩阵, $mn$个数, $n$个列和$m$个行.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{ViewingMatrix-4Ways.eps}\\
+    \caption{从四个角度理解矩阵}
+\end{figure}
+
+
+\begin{equation*}
+  A= \begin{bmatrix}
+    a_{11} & a_{12}\\
+    a_{21} & a_{22}\\
+    a_{31} & a_{32}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    | & |\\
+    \bm{a_1} & \bm{a_2}\\
+    | & |
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    - \bm{a_1^*} -\\
+    - \bm{a_2^*} -\\
+    - \bm{a_3^*} -
+  \end{bmatrix}
+\end{equation*} \\
+
+在这里, 列向量被标记为粗体$\bm{a_1}$.
+行向量则有一个$\bm{*}$号, 标记为$\bm{a_1^*}$.
+转置向量和矩阵则用$\mathrm{T}$标记为
+$\bm{a}\transp$和$A\transp$.
+
+\section{向量乘以向量——2个视角}
+
+后文中, 我将介绍一些概念, 同时列出“Linear Algebra for Everyone”一书中的相应部分 (部分编号插入如下). 
+详细的内容最好看书, 这里我也添加了一个简短的解释, 以便您可以通过这篇文章尽可能多地理解. 
+此外, 每个图都有一个简短的名称, 例如 v1 (数字 1 表示向量的乘积)、Mv1 (数字 1 表示矩阵和向量的乘积), 以及如下图 (v1) 所示的彩色圆圈. 
+如你所见, 随着讨论的进行, 该名称将被交叉引用. 
+
+\begin{itemize}
+  \item 1.1节 (p.2) 线性组合与点积
+  \item 1.3节 (p.25) 矩阵与秩1
+  \item 1.4节 (p.29) 行方式与列方式
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{VectorTimesVector.eps}
+  \caption{向量乘以向量 - (v1), (v2)}
+\end{figure}
+
+(v1) 是两个向量之间的基础运算, 而 (v2) 将列乘以行并产生一个秩1矩阵. 
+理解 (v2) 的结果 (秩1) 是接下来章节的关键.
+
+\section{矩阵乘以向量——2个视角}
+
+一个矩阵乘以一个向量将产生三个点积组成的向量 (Mv1) 和
+一种$A$的列向量的线性组合.
+
+\begin{itemize}
+  \item 1.1节 (p.3) 线性组合
+  \item 1.3节 (p.21) 矩阵与列空间
+\end{itemize} 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{MatrixTimesVector.eps}
+  \caption{矩阵乘以向量- (Mv1), (Mv2)}
+\end{figure}
+
+往往你会先学习 (Mv1). 但当你习惯了从 (Mv2) 的视角看待它, 会理解$A\bm{x}$是$A$的列的线性组合. 
+矩阵$A$的列向量的所有线性组合生成的子空间记为$\mathbf{C}(A)$. 
+$A\bm{x}=\bm{0}$的解空间则是零空间, 记为$\mathbf{N}(A)$. 
+
+
+同理, 由 (vM1) 和 (vM2) 可见, 行向量乘以矩阵也是同一种理解方式. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{VectorTimesMatrix.eps}
+  \caption{向量乘以矩阵 - (vM1), (vM2)}
+\end{figure}
+
+上图$A$的行向量的所有线性组合生成的子空间记为$\mathbf{C}(A\transp)$. 
+$yA=0$的解空间是$A$的左零空间, 记为 $\mathbf{N}(A\transp)$. 
+
+
+本书的一大亮点即为四个基本子空间: 在$\mathbb{R}^n$ 上的
+$\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ (相互正交) 
+和在$\mathbb{R}^m$ 上的$\mathbf{N}(A\transp)$ + $\mathbf{C}(A)$ (相互正交). 
+
+
+\begin{itemize}
+  \item 3.5节 (p.124) 四个子空间的维度
+\end{itemize} 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[keepaspectratio, width=8cm]{4-Subspaces.eps}
+  \caption{四个子空间}
+\end{figure}
+
+关于秩$r$, 请见$A=CR$ (6.1节) .
+
+
+\section{矩阵乘以矩阵——4个视角}
+
+由``矩阵乘以向量"自然延伸到``矩阵乘以矩阵".
+
+\begin{itemize}
+  \item 1.4节 (p.35) $\bm{AB=C}$的四种乘法
+  \item 也可以见书的封底
+\end{itemize} 
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{MatrixTimesMatrix.eps}
+  \caption{矩阵乘以矩阵 - (MM1), (MM2), (MM3), (MM4)}
+\end{figure}
+
+\section{实用模式}
+
+在这里, 我展示了一些实用的模式, 可以让你更直观地理解接下来的内容。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{Pattern12.eps}
+  \caption{图 1, 2 - (P1), (P1)}
+\end{figure}
+
+P1 是 (MM2) 和 (Mv2) 的结合. 
+P2 是 (MM3) 和 (vM2) 的扩展. 
+注意, P1 是列运算 (右乘一个矩阵), 
+而 P2 是行运算 (左乘一个矩阵). 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{Pattern11-22.eps}
+  \caption{图 1$^\prime$, 2$^\prime$ - (P1$^\prime$), (P2$^\prime$)}
+\end{figure}
+
+(P1$^\prime$) 将对角线上的数乘以矩阵的列, 
+而 (P2$^\prime$) 将对角线上的数乘以矩阵的行. 
+两个分别为 (P1) 和 (P2) 的变体. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.85]{Pattern3.eps}
+  \caption{图 3 - (P3)}
+\end{figure}
+
+当解决微分方程和递归方程时的也会出现这一模式: 
+
+\begin{itemize}
+  \item 6节 (p.201) 特征值和特征向量
+  \item 6.4节 (p.243) 微分方程组
+\end{itemize} 
+
+\begin{align*}
+  \frac{d \bm{u}(t) }{dt} &= A \bm{u}(t), \quad \bm{u}(0)=\bm{u}_0\\
+  \bm{u}_{n+1} &= A \bm{u}_n, \quad \bm{u_0} = \bm{u}_0
+\end{align*}
+
+In both cases, the solutions are expressed with
+eigenvalues ($\lambda_1, \lambda_2, \lambda_3$), 
+eigenvectors $X=\begin{bmatrix} \bm{x}_1 & \bm{x}_2 & \bm{x}_3 \end{bmatrix}$ of $A$, and
+the coefficients $c=\begin{bmatrix} c_1 & c_2 & c_3 \end{bmatrix}\transp$
+which are the coordinates of the initial condition $\bm{u}(0)=\bm{u}_0$ in terms of
+the eigenvectors $X$.
+
+\begin{equation*}
+  \bm{u}_0 = c_1 \bm{x}_1 + c_2 \bm{x}_2 + c_3 \bm{x}_3
+\end{equation*}
+\begin{equation*}
+  \bm{c} =
+  \begin{bmatrix}
+    c_1\\
+    c_2\\
+    c_3
+  \end{bmatrix} = X^{-1} \bm{u}_0
+\end{equation*}
+
+and the general solution of the two equations are:
+
+\begin{align*}
+  \bm{u}(t) &= e^{At} \bm{u}_0 = X e^{\Lambda t} X^{-1} \bm{u_0} &= X e^{\Lambda t} \bm{c} &= c_1 e^{\lambda_1 t} \bm{x}_1 + c_2 e^{\lambda_2 t} \bm{x}_2 + c_3 e^{\lambda_3 t} \bm{x}_3\\
+  \bm{u}_n &= A^n \bm{u}_0 = X \Lambda^n X^{-1} \bm{u_0} &= X \Lambda^n \bm{c} &= c_1 \lambda_1^n \bm{x}_1 + c_2 \lambda_2^n \bm{x}_2 + c_3 \lambda_3^n \bm{x}_3
+\end{align*}
+
+See Figure 8: Pattern 3 (P3) above again for $XDc$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{Pattern4.eps}
+  \caption{Pattern 4 - (P4)}
+\end{figure}
+
+This pattern (P4) works in both eigenvalue decomposition and singular value decomposition.
+Both decompositions are expressed as a product of three matrices with a diagonal matrix in the middle,
+and also a sum of rank 1 matrices with the eigenvalue/singular value coefficients.
+
+More details are discussed in the next section.
+
+\clearpage
+
+\section{The Five Factorizations of a Matrix}
+
+\begin{itemize}
+  \item Preface p.vii, The Plan for the Book.
+\end{itemize}
+$A=CR, A=LU, A=QR, A=Q \Lambda Q\transp, A=U \Sigma V\transp$ are 
+illustrated one by one.
+
+\begin{table}[h]
+  \begin{tabular}{lll}
+    \Large{\boldmath $A=CR$} & \includegraphics{A_CR.eps} &
+    \begin{tabular}{l}
+      Independent columns in $C$\\
+      Row echelon form in $R$\\
+      Leads to column rank = row rank
+    \end{tabular}\\
+
+    \Large{\boldmath $A=LU$} & \includegraphics{A_LU.eps} &
+    \begin{tabular}{l}
+      $LU$ decomposition from\\
+      Gaussian elimination\\
+      (Lower triangular)(Upper triangular)
+    \end{tabular}\\
+
+    \Large{\boldmath $A=QR$} & \includegraphics{A_QR.eps} &
+    \begin{tabular}{l}
+      $QR$ decomposition as\\
+      Gram-Schmidt orthogonalization\\
+      Orthogonal $Q$ and triangular $R$
+    \end{tabular}\\
+     
+    \Large{\boldmath $S=Q\Lambda Q\transp$} & \includegraphics{A_QLQT.eps} &
+    \begin{tabular}{l}
+      Eigenvalue decomposition\\
+      of a symmetric matrix $S$\\
+      Eigenvectors in $Q$, eigenvalues in $\Lambda$
+    \end{tabular}\\
+  
+    \Large{\boldmath $A=U\Sigma V\transp$} & \includegraphics{A_USVT.eps} &
+    \begin{tabular}{l}
+      Singular value decomposition\\
+      of all matrices $A$\\
+      Singular values in $\Sigma$
+    \end{tabular}
+  \end{tabular}
+  \caption{The Five Factorization}
+
+\end{table}
+
+\subsection{$\boldsymbol{A=CR}$}
+
+\begin{itemize}
+  \item Sec.1.4 Matrix Multiplication and $\bm{A=CR}$ (p.29)
+\end{itemize}
+
+All general rectangular matrices $A$ have the same row rank as the column rank.
+This factorization is the most intuitive way to understand this theorem.
+$C$ consists of independent columns of $A$, and $R$ is the row reduced echelon form of $A$.
+$A=CR$ reduces to $r$ independent columns in $C$ times $r$ independent rows in $R$.
+
+\begin{equation*}
+  \begin{split}
+    A &= CR\\
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    2 & 3 & 5
+  \end{bmatrix}
+  & =
+  \begin{bmatrix}
+    1 & 2 \\
+    2 & 3
+  \end{bmatrix}
+  \begin{bmatrix}
+    1 & 0 & 1 \\
+    0 & 1 & 1
+  \end{bmatrix}
+\end{split}
+\end{equation*}
+
+Procedure: Look at the columns of $A$ from left to right. Keep independent ones,
+discard dependent ones which can be created by the former columns.
+The column 1 and the column 2 survive, and the column 3 is discarded
+because it is expressed as a sum of the former two columns.
+To rebuild $A$ by the independent columns 1, 2, you find a row echelon form $R$
+appearing in the right.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{CR1.eps}
+  \caption{Column Rank in $CR$}
+\end{figure}
+
+Now you see the column rank is two because there are only two independent columns in $C$
+and all the columns of $A$ are linear combinations of the two columns of $C$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{CR2.eps}
+  \caption{Row Rank in $CR$}
+\end{figure}
+
+And you see the row rank is two because there are only two independent rows in $R$
+and all the rows of $A$ are linear combinations of the two rows of $R$.
+
+\subsection{$\boldsymbol{A=LU}$}
+
+Solving $A\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as an $LU$ factorization.
+Usually, you apply elementary row operation matrices ($E$) from left of $A$ to make upper trianglar $U$.
+
+\begin{align*}
+  EA &= U\\
+  A &= E^{-1}U\\
+\text{let} \; L = E^{-1}, \quad  A &= LU
+\end{align*}
+
+Now solve $A\bm{x}=\bm{b}$ in 2 steps: (1) forward $L\bm{c}=\bm{b}$ and (2) back $U\bm{x}=\bm{c}$.
+
+
+\begin{itemize}
+  \item Sec.2.3 (p.57) Matrix Computations and $\bm{A=LU}$
+\end{itemize}
+
+Here, we directly calculate $L$ and $U$ from $A$.
+
+\begin{equation*}
+  A = 
+      \begin{bmatrix}
+        |\\
+        \bm{l}_1\\
+        |
+      \end{bmatrix}
+      \begin{bmatrix}
+        -  \bm{u}^*_1  -
+      \end{bmatrix}
+  +  \begin{bmatrix}
+      0 & \begin{matrix} 0 & 0 \end{matrix}\\
+      \begin{matrix} 0 \\ 0 \end{matrix} & A_2
+    \end{bmatrix}
+  = 
+  \begin{bmatrix}
+    |\\
+    \bm{l}_1\\
+    |
+  \end{bmatrix}
+  \begin{bmatrix}
+    - \bm{u}^*_1 -
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    |\\
+    \bm{l}_2\\
+    |
+  \end{bmatrix}
+  \begin{bmatrix}
+    - \bm{u}^*_2  -
+  \end{bmatrix}
+  +  \begin{bmatrix}
+  0 & 0 & 0\\
+  0 & 0 & 0 \\
+  0 & 0 & A_3
+  \end{bmatrix} = LU
+\end{equation*}
+ 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{LU1.eps}
+\caption{Recursive Rank 1 Matrix Peeling from $A$}
+\end{figure}
+
+To find $L$ and $U$, peel off the rank 1 matrix made of
+the first row and the first column of $A$.
+This leaves $A_2$. Do this recursively and decompose $A$ into the sum of rank 1 matrices.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{LU2.eps}
+\caption{$LU$ rebuilds $A$}
+\end{figure}
+
+To rebuild $A$ from $L$ times $U$ is easy.
+
+\subsection{$\boldsymbol{A=QR}$}
+
+$A=QR$ changes the columns of $A$ into perpendicular columns of $Q$, keeping $\bm{C}(A) = \bm{C}(Q)$.
+
+\begin{itemize}
+  \item Sec.4.4 Orthogonal matrices and Gram-Schmidt (p.165)
+\end{itemize}
+
+In Gram-Schmidt, the normalized $\bm{a}_1$ is picked up as $\bm{q}_1$ first and then
+$\bm{a}_2$ is adjusted to be perpendicular to $\bm{q}_1$ to create $\bm{q}_2$, and this
+procedure goes on.
+
+\begin{align*}
+  \bm{q}_1 &= \bm{a}_1/||\bm{a}_1|| \\
+  \bm{q}_2 &= \bm{a}_2 - (\bm{q}_1\transp \bm{a}_2)\bm{q}_1 , \quad \bm{q}_2 = \bm{q}_2/||\bm{q}_2|| \\
+  \bm{q}_3 &= \bm{a}_3 - (\bm{q}_1\transp \bm{a}_3)\bm{q}_1 - (\bm{q}_2\transp \bm{a}_3)\bm{q}_2, \quad \bm{q}_3 = \bm{q}_3/||\bm{q}_3||
+\end{align*}
+
+or you can write with $r_{ij} = \bm{q}_i\transp \bm{a}_j$:
+
+\begin{align*}
+  \bm{a}_1 &= r_{11}\bm{q}_1\\
+  \bm{a}_2 &= r_{12}\bm{q}_1 + r_{22} \bm{q}_2\\
+  \bm{a}_3 &= r_{13}\bm{q}_1 + r_{23} \bm{q}_2 + r_{33} \bm{q}_3
+\end{align*}
+
+The original $A$ becomes $QR$: orthogonal times triangular.
+
+\begin{gather*}
+  A = 
+  \begin{bmatrix}
+    | & | & |\\
+    \bm{q}_1 & \bm{q}_2 & \bm{q}_3\\
+    | & | & |
+  \end{bmatrix}
+  \begin{bmatrix}
+    r_{11} & r_{12} & r_{13}\\
+           & r_{22} & r_{23}\\
+           &        & r_{33}
+  \end{bmatrix} = QR\\
+  \\
+  Q Q\transp=Q\transp Q = I
+\end{gather*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{QR.eps}
+  \caption{$A=QR$}
+\end{figure}
+
+The column vectors of $A$ can be adjusted into an orthonormal set: the column vectors of $Q$.
+Each column vector of $A$ can be rebuilt from $Q$ and the upper triangular matrix $R$ .
+
+See Pattern 1 (P1) again for the graphic interpretation.
+
+
+\subsection{$\boldsymbol{S=Q \Lambda Q\transp}$}
+
+All symmetric matrices $S$ must have real eigenvalues and orthogonal eigenvectors.
+The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are in $Q$. 
+
+\begin{itemize}
+  \item Sec.6.3 (p.227) Symmetric Positive Definite Matrices
+\end{itemize}
+
+\begin{align*}
+  S = Q \Lambda Q\transp
+&= \begin{bmatrix}
+    | & | & |\\
+    \bm{q}_1 & \bm{q}_2 & \bm{q}_3\\
+    | & | & |
+  \end{bmatrix}
+  \begin{bmatrix}
+    \lambda_1 \\
+           & \lambda_2 & \\
+           & & \lambda_3
+  \end{bmatrix}
+  \begin{bmatrix}
+  - \bm{q}_1\transp -\\
+  - \bm{q}_2\transp -\\
+  - \bm{q}_3\transp -
+  \end{bmatrix}\\
+  \\
+  &=
+  \lambda_1 \begin{bmatrix}
+    |\\
+    \bm{q}_1\\
+    |
+  \end{bmatrix}
+  \begin{bmatrix}
+    - \bm{q}_1\transp - 
+  \end{bmatrix}
+  +
+  \lambda_2 \begin{bmatrix}
+  |\\
+  \bm{q}_2\\
+  |
+  \end{bmatrix}
+  \begin{bmatrix}
+  - \bm{q}_2\transp -
+  \end{bmatrix} 
+  +
+  \lambda_3 \begin{bmatrix}
+    |\\
+    \bm{q}_3 \\
+    |
+  \end{bmatrix}
+  \begin{bmatrix}
+    - \bm{q}_3\transp -
+  \end{bmatrix} \\
+&= \lambda_1 P_1 + \lambda_2 P_2 + \lambda_3 P_3
+\end{align*}
+
+\begin{equation*}
+  P_1=\bm{q}_1 \bm{q}_1\transp, \quad P_2=\bm{q}_2 \bm{q}_2\transp, \quad P_3=\bm{q}_3 \bm{q}_3\transp
+\end{equation*}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{EVD.eps}
+  \caption{$S=Q \Lambda Q\transp$}
+\end{figure}
+
+A symmetric matrix $S$ is diagonalized into $\Lambda$  by an orthogonal matrix $Q$
+and its transpose. And it is broken down into a combination of rank 1 projection matrices $P=qq\transp$.
+This is the spectral theorem.
+
+Note that Pattern 4 (P4) is working for the decomposition.
+
+\begin{gather*}
+  S=S\transp = \lambda_1 P_1 + \lambda_2 P_2 + \lambda_3 P_3\\
+  QQ\transp = P_1 + P_2 + P_3 = I \\
+  P_1 P_2 = P_2 P_3 = P_3 P_1 = O\\
+  P_1^2 =P_1=P_1\transp, \quad P_2^2=P_2=P_2\transp, \quad P_3^2=P_3=P_3\transp
+\end{gather*}
+
+\subsection{$\boldsymbol{A=U \Sigma V\transp}$}
+
+
+\begin{itemize}
+  \item Sec.7.1 (p.259) Singular Values and Singular Vecrtors
+\end{itemize}
+
+All matrices including rectangular ones have a singular value decomposition (SVD).
+$A=U \Sigma V\transp$ has the singular vectors of $A$ in $U$ and $V$.
+And its singular values line up in $\Lambda$'s diagonal elements.
+The following illustrates the 'reduced' SVD.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.8]{SVD.eps}
+  \caption{$A=U \Sigma V\transp$}
+\end{figure}
+
+You can find $V$ as an orthonormal basis of $\mathbb{R}^n$ (eigenvectors of $A\transp A$),
+and $U$ as an orthonormal basis of $\mathbb{R}^m$ (eigenvectors of $AA\transp$).
+Together they diagonalize $A$ into $\Sigma$.
+This is also expressed as a combination of rank 1 matrices.
+
+\begin{align*}
+  A = U \Sigma V\transp =
+  \begin{bmatrix}
+    | & | & |\\
+    \bm{u}_1 & \bm{u}_2 & \bm{u}_3\\
+    | & | & |
+  \end{bmatrix}
+  \begin{bmatrix}
+    \sigma_1 \\
+           & \sigma_2 \\
+           & &
+  \end{bmatrix}
+  \begin{bmatrix}
+  - \bm{v}_1\transp -\\
+  - \bm{v}_2\transp -
+  \end{bmatrix}
+  & =
+  \sigma_1 \begin{bmatrix}
+    |\\
+    \bm{u}_1\\
+    |
+  \end{bmatrix}
+  \begin{bmatrix}
+    - \bm{v}_1\transp - 
+  \end{bmatrix}
+  +
+  \sigma_2 \begin{bmatrix}
+  |\\
+  \bm{u}_2\\
+  |
+  \end{bmatrix}
+  \begin{bmatrix}
+  - \bm{v}_2\transp -
+  \end{bmatrix} \\
+& = \sigma_1 \bm{u}_1 \bm{v}_1\transp + \sigma_2 \bm{u}_2 \bm{v}_2\transp
+\end{align*}
+
+Note that:
+
+\begin{align*}
+  U U\transp &= I_m \\
+  V V\transp &= I_n
+\end{align*}
+
+See Pattern 4 (P4) for the graphic notation.
+
+\section*{Conclusion and Acknowledgements}
+
+I presented systematic visualizations of matrix/vector multiplication and
+their application to the Five Matrix Factorizations. I hope you
+enjoyed them and will use them
+in your understanding of Linear Algebra.
+
+Ashley Fernandes helped me with beautifying this paper in typesetting
+and made it much more consistent and professional.
+
+To conclude this paper, I'd like to thank Prof. Gilbert Strang for
+publishing ``Linear Algebra for Everyone". It guides us
+through a new vision to these beautiful landscapes in Linear Algebra.
+Everyone can reach a fundamental understanding of its underlying ideas
+in a practical manner that introduces us to contemporary and also
+traditional data science and machine learning. An important part of the matrix world.
+
+\section*{References and Related Works}
+\begin{enumerate}
+  \item 
+  Gilbert Strang(2020),\emph{Linear Algebra for Everyone}, Wellesley Cambridge Press.,\\
+  \href{http://math.mit.edu/everyone}{http://math.mit.edu/everyone}
+  \item
+  Gilbert Strang(2016), \emph{Introduction to Linear Algebra},Wellesley Cambridge Press, 5th ed.,\\
+  \href{http://math.mit.edu/linearalgebra}{http://math.mit.edu/linearalgebra}
+  \item Kenji Hiranabe(2021), \emph{Map of Eigenvalues}, An Agile Way(blog),\\
+  \href{https://anagileway.com/2021/10/01/map-of-eigenvalues/}{https://anagileway.com/2021/10/01/map-of-eigenvalues/}\\
+  \begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio, width=\linewidth]{MapofEigenvalues.eps}
+    \caption{Map of Eigenvalues}
+  \end{figure}
+  \item Kenji Hiranabe(2020), \emph{Matrix World}, An Agile Way(blog),\\
+  \href{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio, width=\linewidth]{MatrixWorld.eps}
+    \caption{Matrix World}
+  \end{figure}
+\end{enumerate}
+
+\end{document}

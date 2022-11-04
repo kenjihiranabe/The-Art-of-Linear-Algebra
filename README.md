@@ -1,10 +1,17 @@
+English ｜ [中文(简体)](README-zh-CN.md)
+
 # The-Art-of-Linear-Algebra
+
 Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 
 The output file is "[The-Art-of-Linear-Algebra.pdf](The-Art-of-Linear-Algebra.pdf)"
+
 Japanese version "[The-Art-of-Linear-Algebra-j.pdf](The-Art-of-Linear-Algebra-j.pdf)"
 
+Chinese version "[The-Art-of-Linear-Algebra-zh-CN.pdf](The-Art-of-Linear-Algebra-zh-CN.pdf)" and "[kf-liu/The-Art-of-Linear-Algebra-zh-CN/The-Art-of-Linear-Algebra-zh-CN.pdf](https://github.com/kf-liu/The-Art-of-Linear-Algebra-zh-CN/blob/main/The-Art-of-Linear-Algebra-zh-CN.pdf)" for the latest Chinese version. 
+
 ## Abstract
+
 I tried intuitive visualizations of important concepts introduced
 in "Linear Algebra for Everyone".
 
@@ -27,5 +34,5 @@ Also includes other graphics.
 ## Matrix World
 
 ![Matrix World](MatrixWorld.png)
-- Avaialble in PDF "[MatrixWorld](MatrixWorld.pdf)"
 
+- Avaialble in PDF "[MatrixWorld](MatrixWorld.pdf)"
