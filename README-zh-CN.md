@@ -23,7 +23,7 @@ Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 ## 摘要
 
 我尝试为 Gilbert Strang 在书籍 “Linear Algebra for Everyone” 中介绍的矩阵的重要概念进行可视化图释, 以促进从矩阵分解的角度对向量、矩阵计算和算法的理解.
-它们包括列-行 (Column-Row, CR)、高斯消除 (Gaussian Elimination, LU)、施密特正交化 (Gram-Schmidt Orthogonalization, QR)、特征值和对角化 (Eigenvalues and Diagonalization, QΛQ')、和奇异值分解(Singular Value Decomposition, UΣV').
+它们包括矩阵分解 (Column-Row, CR)、高斯消去法 (Gaussian Elimination, LU)、格拉姆-施密特正交化 (Gram-Schmidt Orthogonalization, QR)、特征值和对角化 (Eigenvalues and Diagonalization, QΛQ')、和奇异值分解(Singular Value Decomposition, UΣV').
 
 ![5种分解](5-Factorizations.png)
 
@@ -41,8 +41,8 @@ Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 
 - 可以在 PDF "[MatrixWorld](MatrixWorld.pdf)"中查看
 
-## 协议
+## 许可证
 
-英文与日文版本协议见[原文](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra), 译者行文时, 原文版本使用 CC0-1.0 协议.
+英文与日文版本许可证见[原文](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra), 译者行文时, 原文版本使用 CC0-1.0 许可证.
 
-中文版本使用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>协议, 请勿商用.
+中文版本使用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>许可证, 请勿商用.
