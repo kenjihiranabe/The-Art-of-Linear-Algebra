@@ -34,7 +34,7 @@
 with the kindest help of Gilbert Strang
 \thanks{Massachusetts Institute of Technology, \url{http://www-math.mit.edu/\~gs/}} \\
 translator: Kefang Liu
-\thanks{中文版翻译: \url{https://github.com/kf-liu/The-Art-of-Linear-Algebra-zh-CN}}
+\thanks{twitter: \href{https://twitter.com/KFChLiu}{@kfchliu}, 微博用户: \href{https://weibo.com/u/5717297833}{5717297833}}
 }
 
 \date{September 1, 2021/updated \today}
@@ -48,9 +48,9 @@ translator: Kefang Liu
 以促进从矩阵分解的角度对向量、矩阵计算和算法的理解.
 \footnote{``Linear Algebra for Everyone": 
 \url{http://math.mit.edu/everyone/}.}
-它们包括列-行 (Column-Row, $\bm{CR}$)、
-高斯消除 (Gaussian Elimination, $\bm{LU}$)、
-施密特正交化 (Gram-Schmidt Orthogonalization, $\bm{QR}$)、
+它们包括矩阵分解 (Column-Row, $\bm{CR}$)、
+高斯消去法 (Gaussian Elimination, $\bm{LU}$)、
+格拉姆-施密特正交化 (Gram-Schmidt Orthogonalization, $\bm{QR}$)、
 特征值和对角化 (Eigenvalues and Diagonalization, $\bm{Q \Lambda Q\transp}$)、
 和奇异值分解 (Singular Value Decomposition, $\bm{U \Sigma V\transp}$).
 \end{abstract}
@@ -110,9 +110,9 @@ $\bm{a}\transp$和$A\transp$.
 如你所见, 随着讨论的进行, 该名称将被交叉引用. 
 
 \begin{itemize}
-  \item 1.1节 (p.2) 线性组合与点积
-  \item 1.3节 (p.25) 矩阵与秩1
-  \item 1.4节 (p.29) 行方式与列方式
+  \item 1.1节 (p.2) Linear combination and dot products
+  \item 1.3节 (p.25) Matrix of Rank One
+  \item 1.4节 (p.29) Row way and column way
 \end{itemize}
 
 \begin{figure}[H]
@@ -130,8 +130,8 @@ $\bm{a}\transp$和$A\transp$.
 一种$A$的列向量的线性组合.
 
 \begin{itemize}
-  \item 1.1节 (p.3) 线性组合
-  \item 1.3节 (p.21) 矩阵与列空间
+  \item 1.1节 (p.3) LInear combinations
+  \item 1.3节 (p.21) Matrices and Column Spaces
 \end{itemize} 
 
 \begin{figure}[H]
@@ -163,7 +163,7 @@ $\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ (相互正交)
 
 
 \begin{itemize}
-  \item 3.5节 (p.124) 四个子空间的维度
+  \item 3.5节 (p.124) Dimensions of the Four Subspaces
 \end{itemize} 
 
 \begin{figure}[H]
@@ -180,7 +180,7 @@ $\mathbf{N}(A)$ + $\mathbf{C}(A\transp)$ (相互正交)
 由``矩阵乘以向量"自然延伸到``矩阵乘以矩阵".
 
 \begin{itemize}
-  \item 1.4节 (p.35) $\bm{AB=C}$的四种乘法
+  \item 1.4节 (p.35) Four ways to multiply $\bm{AB=C}$
   \item 也可以见书的封底
 \end{itemize} 
 
@@ -219,14 +219,14 @@ P2 是 (MM3) 和 (vM2) 的扩展.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.85]{Pattern3.eps}
-  \caption{图 3 - (P3)}
+  \caption{图 3 - (P3)}\label{fig:P3}
 \end{figure}
 
 当解决微分方程和递归方程时的也会出现这一模式: 
 
 \begin{itemize}
-  \item 6节 (p.201) 特征值和特征向量
-  \item 6.4节 (p.243) 微分方程组
+  \item 6节 (p.201) Eigenvalues and Eigenvectors
+  \item 6.4节 (p.243) Systems of Differential Equations
 \end{itemize} 
 
 \begin{align*}
@@ -234,12 +234,10 @@ P2 是 (MM3) 和 (vM2) 的扩展.
   \bm{u}_{n+1} &= A \bm{u}_n, \quad \bm{u_0} = \bm{u}_0
 \end{align*}
 
-In both cases, the solutions are expressed with
-eigenvalues ($\lambda_1, \lambda_2, \lambda_3$), 
-eigenvectors $X=\begin{bmatrix} \bm{x}_1 & \bm{x}_2 & \bm{x}_3 \end{bmatrix}$ of $A$, and
-the coefficients $c=\begin{bmatrix} c_1 & c_2 & c_3 \end{bmatrix}\transp$
-which are the coordinates of the initial condition $\bm{u}(0)=\bm{u}_0$ in terms of
-the eigenvectors $X$.
+在两种问题中, 它的解都可以用$A$的特征值($\lambda_1, \lambda_2, \lambda_3$)、
+特征向量$X=\begin{bmatrix} \bm{x}_1 & \bm{x}_2 & \bm{x}_3 \end{bmatrix}$
+和系数$c=\begin{bmatrix} c_1 & c_2 & c_3 \end{bmatrix}\transp$表示. 
+其中$C$是以$X$为基底的初始值$\bm{u}(0)=\bm{u}_0$的坐标.
 
 \begin{equation*}
   \bm{u}_0 = c_1 \bm{x}_1 + c_2 \bm{x}_2 + c_3 \bm{x}_3
@@ -253,14 +251,14 @@ the eigenvectors $X$.
   \end{bmatrix} = X^{-1} \bm{u}_0
 \end{equation*}
 
-and the general solution of the two equations are:
+以上两个问题的通解为: 
 
 \begin{align*}
   \bm{u}(t) &= e^{At} \bm{u}_0 = X e^{\Lambda t} X^{-1} \bm{u_0} &= X e^{\Lambda t} \bm{c} &= c_1 e^{\lambda_1 t} \bm{x}_1 + c_2 e^{\lambda_2 t} \bm{x}_2 + c_3 e^{\lambda_3 t} \bm{x}_3\\
   \bm{u}_n &= A^n \bm{u}_0 = X \Lambda^n X^{-1} \bm{u_0} &= X \Lambda^n \bm{c} &= c_1 \lambda_1^n \bm{x}_1 + c_2 \lambda_2^n \bm{x}_2 + c_3 \lambda_3^n \bm{x}_3
 \end{align*}
 
-See Figure 8: Pattern 3 (P3) above again for $XDc$.
+见Figure\ref{fig:P3}: P3中的$XDc$. 
 
 \begin{figure}[H]
   \centering
@@ -268,73 +266,72 @@ See Figure 8: Pattern 3 (P3) above again for $XDc$.
   \caption{Pattern 4 - (P4)}
 \end{figure}
 
-This pattern (P4) works in both eigenvalue decomposition and singular value decomposition.
-Both decompositions are expressed as a product of three matrices with a diagonal matrix in the middle,
-and also a sum of rank 1 matrices with the eigenvalue/singular value coefficients.
+P4在特征值分解和特异值分解中都会用到. 
+两种分解都可以表示为三个矩阵之积, 其中中间的矩阵均为对角矩阵. 
+且都可以表示为带特征值/特异值系数的秩1矩阵之积. 
 
-More details are discussed in the next section.
+更多细节将在下一节中讨论. 
 
 \clearpage
 
-\section{The Five Factorizations of a Matrix}
+\section{矩阵的五种分解}
 
 \begin{itemize}
-  \item Preface p.vii, The Plan for the Book.
+  \item 前言 p.vii, The Plan for the Book.
 \end{itemize}
-$A=CR, A=LU, A=QR, A=Q \Lambda Q\transp, A=U \Sigma V\transp$ are 
-illustrated one by one.
+$A=CR, A=LU, A=QR, A=Q \Lambda Q\transp, A=U \Sigma V\transp$ 将一一说明.
 
 \begin{table}[h]
   \begin{tabular}{lll}
     \Large{\boldmath $A=CR$} & \includegraphics{A_CR.eps} &
     \begin{tabular}{l}
-      Independent columns in $C$\\
-      Row echelon form in $R$\\
-      Leads to column rank = row rank
+      $C$为$A$的线性无关列\\
+      $R$为$A$的行阶梯形矩阵\\
+      可推知 列秩 = 行秩
     \end{tabular}\\
 
     \Large{\boldmath $A=LU$} & \includegraphics{A_LU.eps} &
     \begin{tabular}{l}
-      $LU$ decomposition from\\
-      Gaussian elimination\\
-      (Lower triangular)(Upper triangular)
+      $LU$分解通过\\
+      高斯消去法\\
+      (下三角)(上三角)
     \end{tabular}\\
 
     \Large{\boldmath $A=QR$} & \includegraphics{A_QR.eps} &
     \begin{tabular}{l}
-      $QR$ decomposition as\\
-      Gram-Schmidt orthogonalization\\
-      Orthogonal $Q$ and triangular $R$
+      $QR$分解为\\
+      格拉姆-施密特正交化中的\\
+      正交矩阵$Q$和三角矩阵$R$
     \end{tabular}\\
      
     \Large{\boldmath $S=Q\Lambda Q\transp$} & \includegraphics{A_QLQT.eps} &
     \begin{tabular}{l}
-      Eigenvalue decomposition\\
-      of a symmetric matrix $S$\\
-      Eigenvectors in $Q$, eigenvalues in $\Lambda$
+      对称矩阵$S$可以进行\\
+      特征值分解\\
+      特征向量组成$Q$, 特征值组成$\Lambda$
     \end{tabular}\\
   
     \Large{\boldmath $A=U\Sigma V\transp$} & \includegraphics{A_USVT.eps} &
     \begin{tabular}{l}
-      Singular value decomposition\\
-      of all matrices $A$\\
-      Singular values in $\Sigma$
+      所有矩阵$A$的\\
+      奇异值分解 \\
+      奇异值组成$\Sigma$
     \end{tabular}
   \end{tabular}
-  \caption{The Five Factorization}
+  \caption{五种分解}
 
 \end{table}
 
 \subsection{$\boldsymbol{A=CR}$}
 
 \begin{itemize}
-  \item Sec.1.4 Matrix Multiplication and $\bm{A=CR}$ (p.29)
+  \item 1.4节 Matrix Multiplication and $\bm{A=CR}$ (p.29)
 \end{itemize}
 
-All general rectangular matrices $A$ have the same row rank as the column rank.
-This factorization is the most intuitive way to understand this theorem.
-$C$ consists of independent columns of $A$, and $R$ is the row reduced echelon form of $A$.
-$A=CR$ reduces to $r$ independent columns in $C$ times $r$ independent rows in $R$.
+所有一般的长矩阵$A$都有相同的行秩和列秩. 
+这个分解是理解这一定力最直观的方法. 
+$C$由$A$的线性无关列组成, $R$为$A$的行阶梯形矩阵 (消除了零行).
+$A=CR$将$A$化简为$r$的线性无关列$C$和线性无关行$R$的乘积. 
 
 \begin{equation*}
   \begin{split}
@@ -355,35 +352,31 @@ $A=CR$ reduces to $r$ independent columns in $C$ times $r$ independent rows in $
 \end{split}
 \end{equation*}
 
-Procedure: Look at the columns of $A$ from left to right. Keep independent ones,
-discard dependent ones which can be created by the former columns.
-The column 1 and the column 2 survive, and the column 3 is discarded
-because it is expressed as a sum of the former two columns.
-To rebuild $A$ by the independent columns 1, 2, you find a row echelon form $R$
-appearing in the right.
+推导过程: 从左往右看$A$的列. 保留其中线性无关的列, 去掉可以由前者线性表出的列. 
+则第1、2列被保留, 而第三列因为可以由前两列之和表示而被去掉. 
+而要通过线性无关的1、2两列重新构造出$A$, 需要右乘一个行阶梯矩阵$R$. 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{CR1.eps}
-  \caption{Column Rank in $CR$}
+  \caption{$CR$中列的秩}
 \end{figure}
 
-Now you see the column rank is two because there are only two independent columns in $C$
-and all the columns of $A$ are linear combinations of the two columns of $C$.
+现在你会发现行的秩为2, 因为$C$中只有2个线性无关列. 
+而$A$中所有的列都可以由$C$中的2列线性表出. 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{CR2.eps}
-  \caption{Row Rank in $CR$}
+  \caption{$CR$中行的秩}
 \end{figure}
 
-And you see the row rank is two because there are only two independent rows in $R$
-and all the rows of $A$ are linear combinations of the two rows of $R$.
+同样, 列秩也为2, 因为$R$中只有2个线性无关行, 且$A$中所有的行都可以由$R$中的2行线性表出. 
 
 \subsection{$\boldsymbol{A=LU}$}
 
-Solving $A\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as an $LU$ factorization.
-Usually, you apply elementary row operation matrices ($E$) from left of $A$ to make upper trianglar $U$.
+用高斯消除法求解$A\bm{x}=\bm{b}$也被称为$LU$分解. 
+通常, 是$A$左乘一个初等行变换矩阵($E$)来得到一个上三角矩阵$U$. 
 
 \begin{align*}
   EA &= U\\
@@ -391,14 +384,14 @@ Usually, you apply elementary row operation matrices ($E$) from left of $A$ to m
 \text{let} \; L = E^{-1}, \quad  A &= LU
 \end{align*}
 
-Now solve $A\bm{x}=\bm{b}$ in 2 steps: (1) forward $L\bm{c}=\bm{b}$ and (2) back $U\bm{x}=\bm{c}$.
+现在, 求解$A\bm{x}=\bm{b}$有2步: (1)求解$L\bm{c}=\bm{b}$, (2)代回$U\bm{x}=\bm{c}$. 
 
 
 \begin{itemize}
-  \item Sec.2.3 (p.57) Matrix Computations and $\bm{A=LU}$
+  \item 2.3节 (p.57) Matrix Computations and $\bm{A=LU}$
 \end{itemize}
 
-Here, we directly calculate $L$ and $U$ from $A$.
+在这里, 我们直接通过$A$计算$L$和$U$.
 
 \begin{equation*}
   A = 
@@ -443,33 +436,32 @@ Here, we directly calculate $L$ and $U$ from $A$.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{LU1.eps}
-\caption{Recursive Rank 1 Matrix Peeling from $A$}
+\caption{$A的递归秩1矩阵分离$}
 \end{figure}
 
-To find $L$ and $U$, peel off the rank 1 matrix made of
-the first row and the first column of $A$.
-This leaves $A_2$. Do this recursively and decompose $A$ into the sum of rank 1 matrices.
+要计算$L$和$U$, 首先分离出由$A$的第一行和第一列组成的外积. 
+余下的部分为$A_2$. 
+递归执行此操作, 将$A$分解为秩1矩阵之和. 
 
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.8]{LU2.eps}
-\caption{$LU$ rebuilds $A$}
+\caption{由$LU$重新构造$A$}
 \end{figure}
 
-To rebuild $A$ from $L$ times $U$ is easy.
+由$L$乘以$U$来重新构造$A$则相对简单. 
 
 \subsection{$\boldsymbol{A=QR}$}
 
-$A=QR$ changes the columns of $A$ into perpendicular columns of $Q$, keeping $\bm{C}(A) = \bm{C}(Q)$.
+$A=QR$是在保持$\bm{C}(A) = \bm{C}(Q)$的条件下, 将$A$转化为正交矩阵$Q$.
 
 \begin{itemize}
-  \item Sec.4.4 Orthogonal matrices and Gram-Schmidt (p.165)
+  \item 4.4节 Orthogonal matrices and Gram-Schmidt (p.165)
 \end{itemize}
 
-In Gram-Schmidt, the normalized $\bm{a}_1$ is picked up as $\bm{q}_1$ first and then
-$\bm{a}_2$ is adjusted to be perpendicular to $\bm{q}_1$ to create $\bm{q}_2$, and this
-procedure goes on.
+在格拉姆-施密特正交化中, 首先, 单位化的$\bm{a}_1$被用作$\bm{q}_1$, 
+然后求出$\bm{a}_2$与$\bm{q}_1$正交所得到的$\bm{q}_2$, 以此类推. 
 
 \begin{align*}
   \bm{q}_1 &= \bm{a}_1/||\bm{a}_1|| \\
@@ -477,7 +469,7 @@ procedure goes on.
   \bm{q}_3 &= \bm{a}_3 - (\bm{q}_1\transp \bm{a}_3)\bm{q}_1 - (\bm{q}_2\transp \bm{a}_3)\bm{q}_2, \quad \bm{q}_3 = \bm{q}_3/||\bm{q}_3||
 \end{align*}
 
-or you can write with $r_{ij} = \bm{q}_i\transp \bm{a}_j$:
+或者你也可以写作$r_{ij} = \bm{q}_i\transp \bm{a}_j$:
 
 \begin{align*}
   \bm{a}_1 &= r_{11}\bm{q}_1\\
@@ -485,7 +477,7 @@ or you can write with $r_{ij} = \bm{q}_i\transp \bm{a}_j$:
   \bm{a}_3 &= r_{13}\bm{q}_1 + r_{23} \bm{q}_2 + r_{33} \bm{q}_3
 \end{align*}
 
-The original $A$ becomes $QR$: orthogonal times triangular.
+原本的$A$就可以表示为$QR$: 正交矩阵乘以上三角矩阵. 
 
 \begin{gather*}
   A = 
@@ -509,19 +501,19 @@ The original $A$ becomes $QR$: orthogonal times triangular.
   \caption{$A=QR$}
 \end{figure}
 
-The column vectors of $A$ can be adjusted into an orthonormal set: the column vectors of $Q$.
-Each column vector of $A$ can be rebuilt from $Q$ and the upper triangular matrix $R$ .
+$A$的列向量就可以转化为一个正交集合: $Q$的列向量. 
+$A$的每一个列向量都可以用$Q$和上三角矩阵$R$重新构造出. 
 
-See Pattern 1 (P1) again for the graphic interpretation.
+图释可以回头看P1.
 
 
 \subsection{$\boldsymbol{S=Q \Lambda Q\transp}$}
 
-All symmetric matrices $S$ must have real eigenvalues and orthogonal eigenvectors.
-The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are in $Q$. 
+所有对称矩阵$S$都必须有实特征值和正交特征向量. 
+特征值是$\Lambda$的对角元素, 特征向量在$Q$中. 
 
 \begin{itemize}
-  \item Sec.6.3 (p.227) Symmetric Positive Definite Matrices
+  \item 6.3节 (p.227) Symmetric Positive Definite Matrices
 \end{itemize}
 
 \begin{align*}
@@ -583,11 +575,10 @@ The eigenvalues are the diagonal elements of $\Lambda$ and the eigenvectors are 
   \caption{$S=Q \Lambda Q\transp$}
 \end{figure}
 
-A symmetric matrix $S$ is diagonalized into $\Lambda$  by an orthogonal matrix $Q$
-and its transpose. And it is broken down into a combination of rank 1 projection matrices $P=qq\transp$.
-This is the spectral theorem.
+一个对乘矩阵$S$通过一个正交矩阵$Q$和它的转置矩阵, 对角化为$\Lambda$. 
+然后被分解为一阶投影矩阵$P=qq\transp$的组合. 这就是谱定理. 
 
-Note that Pattern 4 (P4) is working for the decomposition.
+注意, 这里的分解用到了P4.
 
 \begin{gather*}
   S=S\transp = \lambda_1 P_1 + \lambda_2 P_2 + \lambda_3 P_3\\
@@ -600,13 +591,13 @@ Note that Pattern 4 (P4) is working for the decomposition.
 
 
 \begin{itemize}
-  \item Sec.7.1 (p.259) Singular Values and Singular Vecrtors
+  \item 7.1节 (p.259) Singular Values and Singular Vecrtors
 \end{itemize}
 
-All matrices including rectangular ones have a singular value decomposition (SVD).
-$A=U \Sigma V\transp$ has the singular vectors of $A$ in $U$ and $V$.
-And its singular values line up in $\Lambda$'s diagonal elements.
-The following illustrates the 'reduced' SVD.
+包括长方阵在内的所有矩阵都具有奇异值分解(SVD). 
+$A=U \Sigma V\transp$中, 有$A$的奇异向量$U$和$V$. 
+奇异值则排列在$\Sigma$的对角线上. 
+下图就是“简化版”的SVD. 
 
 
 \begin{figure}[H]
@@ -615,10 +606,10 @@ The following illustrates the 'reduced' SVD.
   \caption{$A=U \Sigma V\transp$}
 \end{figure}
 
-You can find $V$ as an orthonormal basis of $\mathbb{R}^n$ (eigenvectors of $A\transp A$),
-and $U$ as an orthonormal basis of $\mathbb{R}^m$ (eigenvectors of $AA\transp$).
-Together they diagonalize $A$ into $\Sigma$.
-This is also expressed as a combination of rank 1 matrices.
+你可以发现, $V$是$\mathbb{R}^n$ ($A\transp A$的特征向量) 的标准正交基, 
+而$U$是 $\mathbb{R}^m$ ($AA\transp$的特征向量) 的标准正交基. 
+它们共同将$A$对角化为$\Sigma$. 
+这也可以表示为秩1矩阵的线性组合. 
 
 \begin{align*}
   A = U \Sigma V\transp =
@@ -657,33 +648,27 @@ This is also expressed as a combination of rank 1 matrices.
 & = \sigma_1 \bm{u}_1 \bm{v}_1\transp + \sigma_2 \bm{u}_2 \bm{v}_2\transp
 \end{align*}
 
-Note that:
+注意: 
 
 \begin{align*}
   U U\transp &= I_m \\
   V V\transp &= I_n
 \end{align*}
 
-See Pattern 4 (P4) for the graphic notation.
+图释见P4.
 
-\section*{Conclusion and Acknowledgements}
+\section*{总结和致谢}
 
-I presented systematic visualizations of matrix/vector multiplication and
-their application to the Five Matrix Factorizations. I hope you
-enjoyed them and will use them
-in your understanding of Linear Algebra.
+我展示了矩阵/向量乘法的系统可视化与它们在五种矩阵分解中的应用. 
+我希望你能够喜欢它们、通过它们加深对线性代数的理解. 
 
-Ashley Fernandes helped me with beautifying this paper in typesetting
-and made it much more consistent and professional.
+Ashley Fernandes 在排版时帮我美化了这篇论文, 使它更加一致和专业. 
 
-To conclude this paper, I'd like to thank Prof. Gilbert Strang for
-publishing ``Linear Algebra for Everyone". It guides us
-through a new vision to these beautiful landscapes in Linear Algebra.
-Everyone can reach a fundamental understanding of its underlying ideas
-in a practical manner that introduces us to contemporary and also
-traditional data science and machine learning. An important part of the matrix world.
+在结束这篇论文之前, 我要感谢 Gilbert Strang 教授发表了《人人都可以用线性代数》一文. 
+它引导我们通过新的视角去了解线性代数中这些美丽的风景. 
+每个人都可以通过一种实用的方式对它的基本思想进行基本理解, 从而向我们介绍当代和传统的数据科学和机器学习. 矩阵世界的重要组成部分. 
 
-\section*{References and Related Works}
+\section*{参考文献与相关工作}
 \begin{enumerate}
   \item 
   Gilbert Strang(2020),\emph{Linear Algebra for Everyone}, Wellesley Cambridge Press.,\\
@@ -696,14 +681,14 @@ traditional data science and machine learning. An important part of the matrix w
   \begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio, width=\linewidth]{MapofEigenvalues.eps}
-    \caption{Map of Eigenvalues}
+    \caption{特征值图}
   \end{figure}
   \item Kenji Hiranabe(2020), \emph{Matrix World}, An Agile Way(blog),\\
   \href{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}{https://anagileway.com/2020/09/29/matrix-world-in-linear-algebra-for-everyone/}
   \begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio, width=\linewidth]{MatrixWorld.eps}
-    \caption{Matrix World}
+    \caption{矩阵世界}
   \end{figure}
 \end{enumerate}
 
