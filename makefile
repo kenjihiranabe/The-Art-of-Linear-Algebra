@@ -74,8 +74,8 @@ japp_eps: $(ILLUST)-j.ps
 	done
 
 japp_copy:
-	cp japp*.eps ../linear-algebra-for-everyone/translation/jfigs
-	cp japp*.eps ../linear-algebra-for-everyone/translation/figs
+	cp figs/japp*.eps ../linear-algebra-for-everyone/translation/jfigs
+	cp figs/japp*.eps ../linear-algebra-for-everyone/translation/figs
 
 clean:
 	rm -f *.dvi *.out *.log *.fls *.aux *.toc *.synctex.gz *.fdb_latexmk out/* *.p figs/*.ps
