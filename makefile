@@ -30,7 +30,7 @@ $(ILLUST)-j.ps: $(ILLUST)-j.pptx
 # so this target has to be kicked by hand after changing PowerPoint illustrations.
 # the "page number to figure name" table is in the name-list.mak
 eps-updated.touch: $(ILLUST).ps
-	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
+	for i in {1..44}; do \
 		$(PSSELECT) $$i $< figs/illust-p$$i.ps; \
 		$(PS2EPS) figs/illust-p$$i.ps; \
 		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e's|^.*|figs/&.eps|' | xargs cp figs/illust-p$$i.eps ; \
@@ -38,7 +38,7 @@ eps-updated.touch: $(ILLUST).ps
 	ls -lR > $@
 
 epsj-updated.touch: $(ILLUST)-j.ps
-	for i in `sed '/^#/d' name-list.mak | cut -d ' ' -f 1`; do \
+	for i in {1..44}; do \
 		$(PSSELECT) $$i $< figs/illust-p$$i-j.ps; \
 		$(PS2EPS) figs/illust-p$$i-j.ps; \
 		grep "^$$i " name-list.mak | cut -d ' ' -f 2 | sed -e 's|^.*|figs/&-j.eps|' | xargs cp figs/illust-p$$i-j.eps ; \
