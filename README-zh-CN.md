@@ -25,19 +25,19 @@ Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 我尝试为 Gilbert Strang 在书籍 “Linear Algebra for Everyone” 中介绍的矩阵的重要概念进行可视化图释, 以促进从矩阵分解的角度对向量、矩阵计算和算法的理解.
 它们包括矩阵分解 (Column-Row, CR)、高斯消去法 (Gaussian Elimination, LU)、格拉姆-施密特正交化 (Gram-Schmidt Orthogonalization, QR)、特征值和对角化 (Eigenvalues and Diagonalization, QΛQ')、和奇异值分解(Singular Value Decomposition, UΣV').
 
-![5种分解](5-Factorizations.png)
+![5种分解](5-Factorizations-zh-CN.png)
 
 也包括其他图形.
 
 ## 特征值图
 
-![特征值图](MapofEigenvalues.png)
+![特征值图](MapofEigenvalues-zh-CN.png)
 
 - 可以在 PDF "[MapofEigenvalues](MapofEigenvalues-v1.1.pdf)"中查看
 
 ## 矩阵世界
 
-![矩阵世界](MatrixWorld.png)
+![矩阵世界](MatrixWorld-zh-CN.png)
 
 - 可以在 PDF "[MatrixWorld](MatrixWorld.pdf)"中查看
 
