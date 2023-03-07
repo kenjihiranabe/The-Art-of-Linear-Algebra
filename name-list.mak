@@ -22,5 +22,8 @@
 41 EVD
 42 SVD
 43 MatrixWorld
-44 MapofEigenvalues
-	
+44 MatrixWorld-simple
+45 MapofEigenvalues
+46 TheFourSubspaces
+47 EVD_x
+48 SVD_x

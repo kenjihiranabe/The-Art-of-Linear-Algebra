@@ -382,7 +382,7 @@ and all the rows of $A$ are linear combinations of the two rows of $R$.
 \subsection{$\boldsymbol{A=LU}$}
 
 Solving $A\bm{x}=\bm{b}$  via Gaussian elimination can be expressed as an $LU$ factorization.
-Usually, you apply elementary row operation matrices ($E$) from left of $A$ to make upper trianglar $U$.
+Usually, you apply elementary row operation matrices ($E$) to $A$ to make upper trianglar $U$.
 
 \begin{align*}
   EA &= U\\
@@ -456,7 +456,7 @@ This leaves $A_2$. Do this recursively and decompose $A$ into the sum of rank 1 
 \caption{$LU$ rebuilds $A$}
 \end{figure}
 
-To rebuild $A$ from $L$ times $U$ is easy.
+To rebuild $A$ from $L$ times $U$, use column-row multiplication.
 
 \subsection{$\boldsymbol{A=QR}$}
 
@@ -466,9 +466,9 @@ $A=QR$ changes the columns of $A$ into perpendicular columns of $Q$, keeping $\b
   \item Sec.4.4 Orthogonal matrices and Gram-Schmidt (p.165)
 \end{itemize}
 
-In Gram-Schmidt, the normalized $\bm{a}_1$ is picked up as $\bm{q}_1$ first and then
-$\bm{a}_2$ is adjusted to be perpendicular to $\bm{q}_1$ to create $\bm{q}_2$, and this
-procedure goes on.
+In Gram-Schmidt, the normalized $\bm{a}_1$ is $\bm{q}_1$.
+Then $\bm{a}_2$ is adjusted to be perpendicular to $\bm{q}_1$ to create $\bm{q}_2$.
+This procedure gives:
 
 \begin{align*}
   \bm{q}_1 &= \bm{a}_1/||\bm{a}_1|| \\
@@ -476,7 +476,7 @@ procedure goes on.
   \bm{q}_3 &= \bm{a}_3 - (\bm{q}_1\transp \bm{a}_3)\bm{q}_1 - (\bm{q}_2\transp \bm{a}_3)\bm{q}_2, \quad \bm{q}_3 = \bm{q}_3/||\bm{q}_3||
 \end{align*}
 
-or you can write with $r_{ij} = \bm{q}_i\transp \bm{a}_j$:
+In the reverse direction, letting $r_{ij} = \bm{q}_i\transp \bm{a}_j$ and you get:
 
 \begin{align*}
   \bm{a}_1 &= r_{11}\bm{q}_1\\
@@ -484,7 +484,7 @@ or you can write with $r_{ij} = \bm{q}_i\transp \bm{a}_j$:
   \bm{a}_3 &= r_{13}\bm{q}_1 + r_{23} \bm{q}_2 + r_{33} \bm{q}_3
 \end{align*}
 
-The original $A$ becomes $QR$: orthogonal times triangular.
+The original $A$ becomes $QR$: orthogonal $Q$ times upper triangular $R$.
 
 \begin{gather*}
   A = 
@@ -508,8 +508,7 @@ The original $A$ becomes $QR$: orthogonal times triangular.
   \caption{$A=QR$}
 \end{figure}
 
-The column vectors of $A$ can be adjusted into an orthonormal set: the column vectors of $Q$.
-Each column vector of $A$ can be rebuilt from $Q$ and the upper triangular matrix $R$ .
+Each column vector of $A$ can be rebuilt from $Q$ and $R$ .
 
 See Pattern 1 (P1) again for the graphic interpretation.
 
@@ -602,9 +601,8 @@ Note that Pattern 4 (P4) is working for the decomposition.
   \item Sec.7.1 (p.259) Singular Values and Singular Vecrtors
 \end{itemize}
 
-All matrices including rectangular ones have a singular value decomposition (SVD).
+Every matrix (including rectangular one) has a singular value decomposition (SVD).
 $A=U \Sigma V\transp$ has the singular vectors of $A$ in $U$ and $V$.
-And its singular values line up in $\Sigma$'s diagonal elements.
 The following illustrates the 'reduced' SVD.
 
 
@@ -704,6 +702,12 @@ traditional data science and machine learning. An important part of the matrix w
     \includegraphics[keepaspectratio, width=\linewidth]{MatrixWorld.eps}
     \caption{Matrix World}
   \end{figure}
+  \item Gilbert Strang and Kenji Hiranabe, \emph{Solutions to $A\bm{x}=\bm{b}$},\\
+  \begin{figure}[H]
+    \includegraphics[keepaspectratio, width=\linewidth]{TheFourSubspaces.eps}
+    \caption{The Four Subspaces and the solutions to $A\bm{x}=\bm{b}$}
+  \end{figure}
+
 \end{enumerate}
 
 \end{document}
