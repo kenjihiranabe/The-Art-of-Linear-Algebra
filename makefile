@@ -8,9 +8,11 @@ MAP=MapofEigenvalues
 
 # PS->EPS options and page cutter from PostScript from PowerPoint.
 PSSELECT=psselect
-PS2EPS=ps2eps -B -l -f
-#PS2EPS=ps2eps -B -l -f -R=+ vertical
-#PS2EPS=ps2eps -B -l -f -R=- horizontal
+#PS2EPS=ps2eps -B -l -f
+#vertical
+PS2EPS=ps2eps -B -l -f -R=+
+# horizontal
+#PS2EPS=ps2eps -B -l -f -R=-
 
 # the two product target files. "-j" means Japaense version.
 all: $(ART).pdf $(ART)-j.pdf
@@ -49,10 +51,13 @@ epsj-updated.touch: $(ILLUST)-j.ps
 %.pdf: out/%.dvi
 	dvipdfmx -p a4 -q $<
 
+# do uplatex twice to make table of contents and references.
 out/$(ART).dvi: $(ART).tex eps-updated.touch
+	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART).tex
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART).tex
 
 out/$(ART)-j.dvi: $(ART)-j.tex epsj-updated.touch
+	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART)-j.tex
 	uplatex -synctex=1 -halt-on-error -file-line-error -output-directory=out $(ART)-j.tex
 
 out/figs-catalog.dvi: figs-catalog.tex figs/epsinclude.tex
