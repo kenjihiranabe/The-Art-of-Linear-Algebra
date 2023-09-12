@@ -28,6 +28,21 @@ $(ILLUST)-j.ps: $(ILLUST)-j.pptx
 	open PowerPointSetting.png
 	exit 1
 
+MATRIXWORLD_PREMUS=Matrix-World-for-PREMUS
+
+matrix-world-premus: figs/$(MATRIXWORLD_PREMUS).eps
+
+$(MATRIXWORLD_PREMUS).ps: $(MATRIXWORLD_PREMUS).pptx
+	@echo "*** .pptx is new !! Print out $< to PostScript(.ps see PowerPointSetting.png for setting), then make again ***"
+	open PowerPointSetting.png
+	exit 1
+
+
+figs/$(MATRIXWORLD_PREMUS).eps: $(MATRIXWORLD_PREMUS).ps
+	$(PSSELECT) 2 $< figs/$(MATRIXWORLD_PREMUS)-cut.ps
+	$(PS2EPS) figs/$(MATRIXWORLD_PREMUS)-cut.ps
+
+
 # the target should be $(EPS) but, avoided muti-loop of execution.
 # so this target has to be kicked by hand after changing PowerPoint illustrations.
 # the "page number to figure name" table is in the name-list.mak
