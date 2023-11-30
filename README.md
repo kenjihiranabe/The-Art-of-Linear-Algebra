@@ -29,7 +29,7 @@ Also includes other graphics.
 
 ![Map of Eigenvalues](MapofEigenvalues.png)
 
-- Avaialble in PDF "[MapofEigenvalues](MapofEigenvalues-v1.1.pdf)"
+- Avaialble in PDF "[MapofEigenvalues](MapofEigenvalues.pdf)"
 
 ## Matrix World
 

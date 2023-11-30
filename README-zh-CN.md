@@ -33,7 +33,7 @@ Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
 
 ![特征值图](MapofEigenvalues-zh-CN.png)
 
-- 可以在 PDF "[MapofEigenvalues](MapofEigenvalues-v1.1.pdf)"中查看
+- 可以在 PDF "[MapofEigenvalues](MapofEigenvalues.pdf)"中查看
 
 ## 矩阵世界
 
