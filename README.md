@@ -2,7 +2,7 @@ English ｜ [中文(简体)](README-zh-CN.md)
 
 # The-Art-of-Linear-Algebra
 
-Graphic notes on Gilbert Strang's "Linear Algebra for Everyone"
+
 
 The output file is "[The-Art-of-Linear-Algebra.pdf](The-Art-of-Linear-Algebra.pdf)"
 
