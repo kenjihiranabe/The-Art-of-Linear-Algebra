@@ -29,10 +29,10 @@ Also includes other graphics.
 
 ![Map of Eigenvalues](MapofEigenvalues.png)
 
-- Avaialble in PDF "[MapofEigenvalues](MapofEigenvalues.pdf)"
+- Available in PDF "[MapofEigenvalues](MapofEigenvalues.pdf)"
 
 ## Matrix World
 
 ![Matrix World](MatrixWorld.png)
 
-- Avaialble in PDF "[MatrixWorld](MatrixWorld.pdf)"
+- Available in PDF "[MatrixWorld](MatrixWorld.pdf)"
