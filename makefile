@@ -8,9 +8,9 @@ MAP=MapofEigenvalues
 
 # PS->EPS options and page cutter from PostScript from PowerPoint.
 PSSELECT=psselect
-#PS2EPS=ps2eps -B -l -f
+PS2EPS=ps2eps -B -l -f
 #vertical
-PS2EPS=ps2eps -B -l -f -R=+
+#PS2EPS=ps2eps -B -l -f -R=+
 # horizontal
 #PS2EPS=ps2eps -B -l -f -R=-
 
