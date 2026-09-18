@@ -1,4 +1,4 @@
-English | 日本語(README-ja.md) | [中文(简体)](README-zh-CN.md)
+English | [日本語](README-ja.md) | [中文(简体)](README-zh-CN.md)
 
 # The-Art-of-Linear-Algebra
 
