@@ -24,7 +24,7 @@ Gilbert Strang 著『Linear Algebra for Everyone』の図解ノートです．�
 
 ## 行列の世界
 
-![行列の世界](MatrixWorld-ja.png)
+![行列の世界](MatrixWorld-j.png)
 
 - PDF「[MatrixWorld](MatrixWorld.pdf)」で利用できます。
 
